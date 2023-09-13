@@ -6,7 +6,7 @@
 #    By: niboukha <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/08 15:19:38 by niboukha          #+#    #+#              #
-#    Updated: 2023/09/08 15:27:39 by niboukha         ###   ########.fr        #
+#    Updated: 2023/09/12 18:36:21 by niboukha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,16 +14,18 @@ NAME = cub3d
 
 CC = cc
 
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -fsanitize=address -g3
 
-SRC =
+SRC = cub3d.c map2d.c move_player.c
+
+MLX = -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
 
 OBJ = $(SRC:.c=.o)
 
 all : $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJ) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
 
 
 clean :
