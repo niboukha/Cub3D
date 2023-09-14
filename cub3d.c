@@ -6,7 +6,7 @@
 /*   By: niboukha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 15:19:31 by niboukha          #+#    #+#             */
-/*   Updated: 2023/09/13 16:45:41 by niboukha         ###   ########.fr       */
+/*   Updated: 2023/09/14 16:54:57 by niboukha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,23 @@
 
 void	init_map(t_map *map)
 {
-	map->map = malloc (sizeof(char *) * 7);
+	map->map = malloc (sizeof(char *) * 10);
 	map->map[0] = "11111111111";
 	map->map[1] = "10010001001";
 	map->map[2] = "10000000001";
 	map->map[3] = "100N0001001";
 	map->map[4] = "10000000001";
 	map->map[5] = "10001000001";
-	map->map[6] = "11111111111";
+	map->map[6] = "10001000001";
+	map->map[7] = "10001000001";
+	map->map[8] = "10001000001";
+	map->map[9] = "11111111111";
 	map->coor.x = strlen(map->map[0]);
-	map->coor.y = 7;
+	map->coor.y = 10;
 	map->coor.new_i = 0;
 	map->coor.new_j = 0;
+	map->coor.angle = 0;
+	map->coor.put = 0;
 }
 
 

@@ -6,7 +6,7 @@
 /*   By: niboukha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 15:19:36 by niboukha          #+#    #+#             */
-/*   Updated: 2023/09/13 18:41:53 by niboukha         ###   ########.fr       */
+/*   Updated: 2023/09/14 16:42:52 by niboukha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,14 @@
 #include <math.h>
 
 # define A 97
-# define S 65364
+# define S 115
 # define W 119
 # define D 100
 # define ESC 53
+# define LEFT 65361
+# define RIGHT 65363
+# define DOWN 65364
+# define UP 65362
 
 typedef struct t_coor
 {
@@ -36,6 +40,8 @@ typedef struct t_coor
 	int	j;
 	int	new_i;
 	int	new_j;
+	int	put;
+	double	angle;
 }		t_coor;
 
 

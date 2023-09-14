@@ -6,7 +6,7 @@
 /*   By: niboukha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 16:37:21 by niboukha          #+#    #+#             */
-/*   Updated: 2023/09/13 18:41:40 by niboukha         ###   ########.fr       */
+/*   Updated: 2023/09/14 18:29:57 by niboukha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,17 +42,26 @@ void	fill_cub_player(t_map *map, int i, int j, int color)
 {
 	int	k;
 	int	e;
+	int	f;
 
-	k = 20;
-	while (k < 40)
+	k = 28;
+	while (k < 32)
 	{
-		e = 20;
-		while (e < 25)
+		e = 28;
+		while (e < 32)
 		{
 			my_mlx_put_pixel(&map->img, (i * 64) + e, (j * 64) + k, color);
 			e++;
 		}
 		k++;
+	}
+	f = 0;
+	while (f < 50)
+	{
+		my_mlx_put_pixel(&map->img,
+				(i * 64) + 30 + roundf(cos(map->coor.angle) * f),
+				(j * 64) + 30 + roundf(sin(map->coor.angle) * f), color);
+		f++;
 	}
 }
 
@@ -62,7 +71,7 @@ void	put_pixel(t_map *map)
 	int	j;
 
 	i = 0;
-	while (i < 7)
+	while (i < 10)
 	{
 		j = 0;
 		while (map->map[i][j])
@@ -70,7 +79,7 @@ void	put_pixel(t_map *map)
 			fill_cub_pixels(map, j, i, 0x0000FF);
 			if (map->map[i][j] == '1')
 				fill_cub_pixels(map, j, i, 0x00000000);
-			if (map->map[i][j] == 'N')
+			if (map->map[i][j] == 'N' && !map->coor.put)
 			{
 				map->coor.i = i;
 				map->coor.j = j;
