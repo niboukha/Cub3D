@@ -6,7 +6,7 @@
 /*   By: niboukha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 15:19:31 by niboukha          #+#    #+#             */
-/*   Updated: 2023/09/14 16:54:57 by niboukha         ###   ########.fr       */
+/*   Updated: 2023/09/14 19:25:40 by niboukha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	init_map(t_map *map)
 	map->coor.new_j = 0;
 	map->coor.angle = 0;
 	map->coor.put = 0;
+	map->coor.d = 0;
 }
 
 

@@ -6,7 +6,7 @@
 /*   By: niboukha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 15:19:36 by niboukha          #+#    #+#             */
-/*   Updated: 2023/09/14 16:42:52 by niboukha         ###   ########.fr       */
+/*   Updated: 2023/09/14 20:07:23 by niboukha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ typedef struct t_coor
 	int	new_i;
 	int	new_j;
 	int	put;
+	int	d;
 	double	angle;
 }		t_coor;
 
@@ -64,9 +65,13 @@ typedef struct t_map
 }			t_map;
 
 void	put_pixel(t_map *map);
-void	fill_cub_player(t_map *map, int i, int j, int color);
-void	fill_cub_pixels(t_map *map, int i, int j, int color);
+void	fill_cub_player(t_map *map, int j, int i, int color);
+void	fill_cub_pixels(t_map *map, int j, int i, int color);
 void	my_mlx_put_pixel(t_image *img, int x, int y, int color);
 int		key(int key_code, t_map *map);
+void	put_a_ray(t_map *map, int j, int i, int color);
+void	move_player(t_map *map, int x, int y);
+void	rotate_player(t_map *map);
+int		find_wall(t_map *map, int x, int y);
 
 #endif
