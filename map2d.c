@@ -6,7 +6,7 @@
 /*   By: niboukha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 16:37:21 by niboukha          #+#    #+#             */
-/*   Updated: 2023/09/14 20:18:13 by niboukha         ###   ########.fr       */
+/*   Updated: 2023/09/16 15:14:37 by niboukha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,21 +20,21 @@ void	my_mlx_put_pixel(t_image *img, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-void	fill_cub_pixels(t_map *map, int j, int i, int color)
+void	fill_cub_pixels(t_map *map, int x, int y, int color)
 {
-	int	k;
-	int	e;
+	int	i;
+	int	j;
 
-	k = 0;
-	while (k < 64)
+	i = 0;
+	while (i < 64)
 	{
-		e = 0;
-		while (e < 64)
+		j = 0;
+		while (j < 64)
 		{
-			my_mlx_put_pixel(&map->img, (j * 64) + e, (i * 64) + k, color);
-			e++;
+			my_mlx_put_pixel(&map->img, (x * 64) + j, (y * 64) + i, color);
+			j++;
 		}
-		k++;
+		i++;
 	}
 }
 
@@ -58,36 +58,54 @@ int	find_wall(t_map *map, int x, int y)
 	return (0);
 }
 
-void	put_a_ray(t_map *map, int j, int i, int color)
+void	put_a_ray(t_map *map, int x, int y, int color)
 {
-	int	f;
+	int	i;
 
-	f = 0;
-	while (!find_wall(map, (j * 64) + 30 + roundf(cos(map->coor.angle) * f),
-		(i * 64) + 30 + roundf(sin(map->coor.angle) * f)))
+	i = 0;
+	while (!find_wall(map, x + roundf(cos(map->coor.angle) * i),
+		y + roundf(sin(map->coor.angle) * i)))
 	{
 		my_mlx_put_pixel(&map->img,
-			(j * 64) + 30 + roundf(cos(map->coor.angle) * f),
-			(i * 64) + 30 + roundf(sin(map->coor.angle) * f), color);
-		f++;
+			x + roundf(cos(map->coor.angle) * i),
+			y + roundf(sin(map->coor.angle) * i), color);
+		i++;
 	}
+	map->coor.d = i;
 }
 
-void	fill_cub_player(t_map *map, int j, int i, int color)
+int	check_wall(t_map *map, int x, int y)
 {
-	int	k;
-	int	e;
+	double	angle;
 
-	k = 28;
-	while (k < 32)
+	angle = 0;
+	while (angle <= 2 * M_PI)
 	{
-		e = 28;
-		while (e < 32)
+		if (find_wall(map, x + roundf(cos(angle) * 15),
+			y + roundf(sin(angle) * 15)) == 1)
+			return (1);
+		my_mlx_put_pixel(&map->img, x + roundf(cos(angle) * 15),
+			y + roundf(sin(angle) * 15), 0xFF0000);
+		angle += 0.1;
+	}
+	return (0);
+}
+
+void	fill_cub_player(t_map *map, int x, int y, int color)
+{
+	int	i;
+	int	j;
+
+	i = y - 2;
+	while (i <= y + 2)
+	{
+		j = x - 2;
+		while (j <= x + 2)
 		{
-			my_mlx_put_pixel(&map->img, (j * 64) + e, (i * 64) + k, color);
-			e++;
+			my_mlx_put_pixel(&map->img, j, i, color);
+			j++;
 		}
-		k++;
+		i++;
 	}
 }
 
@@ -104,18 +122,20 @@ void	put_pixel(t_map *map)
 		{
 			if (map->map[i][j] == '1')
 				fill_cub_pixels(map, j, i, 0x00000000);
-			if (map->map[i][j] == '0')
+			else
 				fill_cub_pixels(map, j, i, 0x0000FF);
 			if (map->map[i][j] == 'N' && !map->coor.put)
 			{
-				map->coor.i = i;
-				map->coor.j = j;
-				fill_cub_pixels(map, j, i, 0x0000FF);
-				fill_cub_player(map, j, i, 0x00FF00);
-				put_a_ray(map, j, i, 0x00FF00);
+				map->coor.put = 1;
+				map->coor.py = i * 64 + 32;
+				map->coor.px = j * 64 + 32;
 			}
 			j++;
 		}
 		i++;
 	}
+	fill_cub_player(map, map->coor.px , map->coor.py , 0x00FF00);
+	put_a_ray(map, map->coor.px , map->coor.py , 0x00FF00);
+	check_wall(map, map->coor.px, map->coor.py);
+	mlx_put_image_to_window(map->mlx, map->mlx_win, map->img.img, 0, 0);
 }

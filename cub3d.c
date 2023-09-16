@@ -6,7 +6,7 @@
 /*   By: niboukha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 15:19:31 by niboukha          #+#    #+#             */
-/*   Updated: 2023/09/14 19:25:40 by niboukha         ###   ########.fr       */
+/*   Updated: 2023/09/16 12:27:43 by niboukha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ int	main(int ac, char **av)
 	map.img.addr = mlx_get_data_addr(map.img.img, &map.img.bits_per_pixel,
 					&map.img.line_length, &map.img.endian);
 	put_pixel(&map);
-	mlx_put_image_to_window(map.mlx, map.mlx_win, map.img.img, 0, 0);
 	mlx_hook(map.mlx_win, 2, 1L<<0, key, &map);
 	mlx_hook(map.mlx_win, 17, 1L<<0, exit_prog, &map);
 	mlx_loop(map.mlx);
