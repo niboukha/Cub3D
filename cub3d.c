@@ -6,7 +6,7 @@
 /*   By: niboukha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 15:19:31 by niboukha          #+#    #+#             */
-/*   Updated: 2023/09/16 12:27:43 by niboukha         ###   ########.fr       */
+/*   Updated: 2023/09/18 16:33:03 by niboukha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ void	init_map(t_map *map)
 	map->coor.angle = 0;
 	map->coor.put = 0;
 	map->coor.d = 0;
+	map->wall.x = 0;
+	map->wall.y = 0;
 }
 
 
@@ -47,15 +49,31 @@ int	main(int ac, char **av)
 	(void)ac;
 	(void)av;
 	init_map(&map);
+
+	//////////////////2D////////////////////////////////////////
+
 	map.mlx = mlx_init();
 	map.mlx_win = mlx_new_window(map.mlx, map.coor.x * 64, map.coor.y * 64,
-					"cub3d");
+					"cub2d");
 	map.img.img = mlx_new_image(map.mlx, map.coor.x * 64, map.coor.y * 64);
 	map.img.addr = mlx_get_data_addr(map.img.img, &map.img.bits_per_pixel,
 					&map.img.line_length, &map.img.endian);
+
+	////////////////3D//////////////////////////////////////////
+
+	map.mlx_win1 = mlx_new_window(map.mlx, 500, 300,
+					"cub3d");
+	map.image.img = mlx_new_image(map.mlx, 500, 300);
+	map.image.addr = mlx_get_data_addr(map.image.img, &map.image.bits_per_pixel,
+					&map.image.line_length, &map.image.endian);
 	put_pixel(&map);
+
+	//////////////////////////////////////////////////////////////////
+
 	mlx_hook(map.mlx_win, 2, 1L<<0, key, &map);
+	mlx_hook(map.mlx_win1, 2, 1L<<0, key, &map);
 	mlx_hook(map.mlx_win, 17, 1L<<0, exit_prog, &map);
+	mlx_hook(map.mlx_win1, 17, 1L<<0, exit_prog, &map);
 	mlx_loop(map.mlx);
 	return (0);
 }

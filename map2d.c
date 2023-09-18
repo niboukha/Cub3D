@@ -6,7 +6,7 @@
 /*   By: niboukha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 16:37:21 by niboukha          #+#    #+#             */
-/*   Updated: 2023/09/16 15:14:37 by niboukha         ###   ########.fr       */
+/*   Updated: 2023/09/18 17:53:31 by niboukha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,18 +60,29 @@ int	find_wall(t_map *map, int x, int y)
 
 void	put_a_ray(t_map *map, int x, int y, int color)
 {
+	double	angle;
 	int	i;
 
-	i = 0;
-	while (!find_wall(map, x + roundf(cos(map->coor.angle) * i),
-		y + roundf(sin(map->coor.angle) * i)))
+	angle = map->coor.angle - (30 * M_PI / 180);
+	while (angle < (map->coor.angle + (30 * M_PI / 180)))
 	{
-		my_mlx_put_pixel(&map->img,
-			x + roundf(cos(map->coor.angle) * i),
-			y + roundf(sin(map->coor.angle) * i), color);
-		i++;
+		i = 0;
+		while (!find_wall(map, x + roundf(cos(angle) * i),
+			y + roundf(sin(angle) * i)))
+		{
+			my_mlx_put_pixel(&map->img,
+				x + roundf(cos(angle) * i),
+				y + roundf(sin(angle) * i), color);
+			i++;
+		}
+		map->coor.d = i;
+		fill_map3(map);
+		draw_walls(map, color);
+		map->wall.x++;
+		angle += ((60.0 / 500) * (M_PI / 180));
 	}
-	map->coor.d = i;
+	map->wall.x = 0;
+	map->wall.y = 0;
 }
 
 int	check_wall(t_map *map, int x, int y)
@@ -138,4 +149,5 @@ void	put_pixel(t_map *map)
 	put_a_ray(map, map->coor.px , map->coor.py , 0x00FF00);
 	check_wall(map, map->coor.px, map->coor.py);
 	mlx_put_image_to_window(map->mlx, map->mlx_win, map->img.img, 0, 0);
+	mlx_put_image_to_window(map->mlx, map->mlx_win1, map->image.img, 0, 0);
 }

@@ -6,7 +6,7 @@
 /*   By: niboukha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 15:19:36 by niboukha          #+#    #+#             */
-/*   Updated: 2023/09/16 15:17:38 by niboukha         ###   ########.fr       */
+/*   Updated: 2023/09/18 17:48:49 by niboukha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,13 +55,23 @@ typedef struct t_image
 	int		endian;
 }			t_image;
 
+typedef struct t_wall
+{
+	int	x;
+	int	y;
+}		t_wall;
+
+
 typedef struct t_map
 {
 	void	*mlx;
 	void	*mlx_win;
+	void	*mlx_win1;
 	char	**map;
 	t_coor	coor;
+	t_wall	wall;
 	t_image	img;
+	t_image	image;
 }			t_map;
 
 void	put_pixel(t_map *map);
@@ -71,8 +81,8 @@ void	my_mlx_put_pixel(t_image *img, int x, int y, int color);
 int		key(int key_code, t_map *map);
 void	put_a_ray(t_map *map, int x, int y, int color);
 void	move_player(t_map *map, int x, int y);
-void	rotate_player(t_map *map);
 int		find_wall(t_map *map, int x, int y);
-int	check_wall(t_map *map, int x, int y);
-
+int		check_wall(t_map *map, int x, int y);
+void	draw_walls(t_map *map, int color);
+void	fill_map3(t_map *map);
 #endif
