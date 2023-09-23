@@ -6,7 +6,7 @@
 /*   By: niboukha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 15:19:36 by niboukha          #+#    #+#             */
-/*   Updated: 2023/09/18 17:48:49 by niboukha         ###   ########.fr       */
+/*   Updated: 2023/09/23 17:46:29 by niboukha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,17 +31,21 @@
 # define RIGHT 65363
 # define DOWN 65364
 # define UP 65362
+# define H_WIN 800
+# define W_WIN 920
 
 typedef struct t_coor
 {
-	int	x;
-	int	y;
-	int	py;
-	int	px;
-	int	new_i;
-	int	new_j;
-	int	put;
-	int	d;
+	int		x;
+	int		y;
+	int		py;
+	int		px;
+	int		new_i;
+	int		new_j;
+	int		put;
+	double		d_h;
+	double		d_v;
+	double		d;
 	double	angle;
 }		t_coor;
 
@@ -59,6 +63,15 @@ typedef struct t_wall
 {
 	int	x;
 	int	y;
+	int	h_x;
+	int	h_y;
+	double	gh_x;
+	double	gh_y;
+	int	v_x;
+	int	v_y;
+	double	gv_x;
+	double	gv_y;
+	int	press;
 }		t_wall;
 
 
@@ -81,8 +94,22 @@ void	my_mlx_put_pixel(t_image *img, int x, int y, int color);
 int		key(int key_code, t_map *map);
 void	put_a_ray(t_map *map, int x, int y, int color);
 void	move_player(t_map *map, int x, int y);
-int		find_wall(t_map *map, int x, int y);
-int		check_wall(t_map *map, int x, int y);
+int		player_collisions(t_map *map, int x, int y);
+int		check_if_wall(t_map *map, int x, int y);
 void	draw_walls(t_map *map, int color);
 void	fill_map3(t_map *map);
+
+void	inter_ver_wall(t_map *map, int x, int y, double angle);
+void	inter_hori_wall(t_map *map, int x, int y, double angle);
+
+void	inter_hor_down(t_map *map, int x, int y, double angle);
+void	inter_hor_up(t_map *map, int x, int y, double angle);
+void	inter_ver_left(t_map *map, int x, int y, double angle);
+void	inter_ver_right(t_map *map, int x, int y, double angle);
+void	coor_of_ver_wall(t_map *map, int x, int y, double angle);
+void	coor_of_hor_wall(t_map *map, int x, int y, double angle);
+
+void	draw_rays(t_map *map, double angle);
+double		distance_wall(t_map *map, int x, int y);
+
 #endif

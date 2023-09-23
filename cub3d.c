@@ -6,7 +6,7 @@
 /*   By: niboukha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 15:19:31 by niboukha          #+#    #+#             */
-/*   Updated: 2023/09/18 16:33:03 by niboukha         ###   ########.fr       */
+/*   Updated: 2023/09/23 17:33:00 by niboukha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,18 @@ void	init_map(t_map *map)
 	map->coor.angle = 0;
 	map->coor.put = 0;
 	map->coor.d = 0;
+	map->coor.d_h = 0;
+	map->coor.d_v = 0;
 	map->wall.x = 0;
 	map->wall.y = 0;
+	map->wall.h_x = 0;
+	map->wall.h_y = 0;
+	map->wall.gh_x = 0;
+	map->wall.gh_y = 0;
+	map->wall.gv_x= 0;
+	map->wall.gv_y = 0;
+	map->wall.v_x = 0;
+	map->wall.v_y = 0;
 }
 
 
@@ -61,9 +71,9 @@ int	main(int ac, char **av)
 
 	////////////////3D//////////////////////////////////////////
 
-	map.mlx_win1 = mlx_new_window(map.mlx, 500, 300,
+	map.mlx_win1 = mlx_new_window(map.mlx, W_WIN, H_WIN,
 					"cub3d");
-	map.image.img = mlx_new_image(map.mlx, 500, 300);
+	map.image.img = mlx_new_image(map.mlx, W_WIN, H_WIN);
 	map.image.addr = mlx_get_data_addr(map.image.img, &map.image.bits_per_pixel,
 					&map.image.line_length, &map.image.endian);
 	put_pixel(&map);
