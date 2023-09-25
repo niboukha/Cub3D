@@ -1,45 +1,41 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: niboukha <marvin@42.fr>                    +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/09/08 15:19:38 by niboukha          #+#    #+#              #
-#    Updated: 2023/09/25 15:26:26 by niboukha         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
-NAME = cub3d
-
 CC = cc
+CFLAGS = -Wall -Wextra -Werror #-fsanitize=address -g3
 
-CFLAGS = -Wall -Werror -Wextra -fsanitize=address -g3
-
-SRC = cub3d.c map2d.c move_player.c cast_rays.c check_intersection.c\
-inter_hor.c inter_ver.c get_dist_wall.c put_pixels.c util_functions.c
-
-MLX = -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
-
-OBJ = $(SRC:.c=.o)
+NAME = cub3D
+LIBFT = ./lib/libft/libft.a
 
 HEADERS = cub3d.h
+# Source files
+LIB = $(LIBFT)  # $(wildcard ./lib/**/*.c)
+SRC = $(wildcard ./src/*.c ./src/**/*.c)
+OBJ = $(SRC:.c=.o)
 
-all : $(NAME)
+all : $(NAME) $(HEADERS)
 
-$(NAME): $(OBJ) $(HEADERS)
-	$(CC) $(CFLAGS) $(OBJ) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
+$(LIBFT) : $(wildcard ./lib/libft/*.c)
+	@echo "⌛ Compiling libft\n"
+	@make -C ./lib/libft
+	@make -C ./lib/libft bonus
+	@make -C ./lib/libft clean
+
+$(NAME): $(SRC) $(LIB)
+	@echo "$(GREEN)⌛ Compiling $(NAME) ...$(END)"
+	@$(CC) $(CFLAGS) $(SRC) $(LIB) $(LDFLAGS) -o $(NAME)
+	@echo "✅ $(NAME) compiled successfully\n"
 
 %.o : %.c cub3d.h
 	$(CC) $(CFLAGS) $< -c -o $@
 
 clean :
-	rm -f $(OBJ)
+	@rm -rf $(OBJ)
+	@make -C  ./lib/libft clean
+	@echo "🗑️  objects removed \n"
 
 fclean : clean
-	rm -f $(NAME)
-OBJ = $(SRC:.c=.o)
+	@rm -rf $(NAME)
+	@make -C  ./lib/libft fclean
+	@echo "🗑️  $(NAME) $(OBJ) removed \n"
+
 re : fclean all
 
-.PHONY: all re clean fclean
-HEADERS = cub3d.h
+.PHONY: all clean fclean re

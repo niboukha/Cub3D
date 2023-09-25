@@ -6,11 +6,11 @@
 /*   By: niboukha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 18:20:17 by niboukha          #+#    #+#             */
-/*   Updated: 2023/09/25 15:31:20 by niboukha         ###   ########.fr       */
+/*   Updated: 2023/09/25 20:50:23 by niboukha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../../includes/cub3d.h"
 
 void	inter_ver_wall(t_map *map, double angle)
 {

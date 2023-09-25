@@ -6,11 +6,11 @@
 /*   By: niboukha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 15:01:54 by niboukha          #+#    #+#             */
-/*   Updated: 2023/09/25 15:31:48 by niboukha         ###   ########.fr       */
+/*   Updated: 2023/09/25 20:50:16 by niboukha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../../includes/cub3d.h"
 
 int	check_if_wall(t_map *map, int x, int y)
 {

@@ -6,11 +6,11 @@
 /*   By: niboukha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 15:19:31 by niboukha          #+#    #+#             */
-/*   Updated: 2023/09/25 14:58:00 by niboukha         ###   ########.fr       */
+/*   Updated: 2023/09/25 20:50:12 by niboukha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../../includes/cub3d.h"
 
 void	init_map(t_map *map)
 {
@@ -20,7 +20,7 @@ void	init_map(t_map *map)
 	map->map[2] = "10000000001";
 	map->map[3] = "100N0001001";
 	map->map[4] = "10000000001";
-	map->map[5] = "10001001001";
+	map->map[5] = "10001000001";
 	map->map[6] = "10001000001";
 	map->map[7] = "10001000001";
 	map->map[8] = "10001000001";
@@ -28,13 +28,6 @@ void	init_map(t_map *map)
 	map->coor.x = strlen(map->map[0]);
 	map->coor.y = 10;
 	map->coor.angle = 0;
-	map->coor.put = 0;
-	map->wall.x = 0;
-	map->wall.y = 0;
-	map->wall.h_x = 0;
-	map->wall.h_y = 0;
-	map->wall.v_x = 0;
-	map->wall.v_y = 0;
 }
 
 
@@ -67,14 +60,21 @@ int	main(int ac, char **av)
 	map.image.img = mlx_new_image(map.mlx, W_WIN, H_WIN);
 	map.image.addr = mlx_get_data_addr(map.image.img, &map.image.bits_per_pixel,
 					&map.image.line_length, &map.image.endian);
+
+	/////////////minimap/////////////////////////////////////////////////////
+
+	// map.mlx_win2 = mlx_new_window(map.mlx, map.coor.x * 10, map.coor.y * 10, "minimap");
+	// map.img_m.img = mlx_new_image(map.mlx, map.coor.x * 10, map.coor.y * 10);
+	// map.img_m.addr = mlx_get_data_addr(map.img_m.img, &map.img.bits_per_pixel,
+	// 				&map.img.line_length, &map.img.endian);
+
 	put_pixel(&map);
-
-	//////////////////////////////////////////////////////////////////
-
 	mlx_hook(map.mlx_win, 2, 1L<<0, key, &map);
 	mlx_hook(map.mlx_win1, 2, 1L<<0, key, &map);
+	// mlx_hook(map.mlx_win2, 2, 1L<<0, key, &map);
 	mlx_hook(map.mlx_win, 17, 1L<<0, exit_prog, &map);
 	mlx_hook(map.mlx_win1, 17, 1L<<0, exit_prog, &map);
+	// mlx_hook(map.mlx_win2, 2, 1L<<0, key, &map);
 	mlx_loop(map.mlx);
 	return (0);
 }

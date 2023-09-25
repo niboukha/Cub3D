@@ -1,18 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   util_functions.c                                   :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: niboukha <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: aait-lfd <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/25 15:26:19 by niboukha          #+#    #+#             */
-/*   Updated: 2023/09/25 15:26:46 by niboukha         ###   ########.fr       */
+/*   Created: 2022/10/06 14:00:50 by aait-lfd          #+#    #+#             */
+/*   Updated: 2022/10/13 18:44:25 by aait-lfd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "libft.h"
 
-double	distance_wall(t_map *map, double x, double y)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	return (sqrt(pow(map->coor.px - x, 2) + pow(map->coor.py - y, 2)));
+	size_t	i;
+
+	i = 0;
+	while (i < n && (s1[i] || s2[i]))
+	{
+		if (s1[i] != s2[i])
+			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+		i++;
+	}
+	return (0);
 }

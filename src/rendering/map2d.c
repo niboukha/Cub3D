@@ -6,11 +6,11 @@
 /*   By: niboukha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 16:37:21 by niboukha          #+#    #+#             */
-/*   Updated: 2023/09/25 15:28:11 by niboukha         ###   ########.fr       */
+/*   Updated: 2023/09/25 20:50:25 by niboukha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../../includes/cub3d.h"
 
 void	draw_rays(t_map *map, double angle)
 {
@@ -46,7 +46,6 @@ void	fill_cub_pixels(t_map *map, int x, int y, int color)
 		i++;
 	}
 }
-
 
 void	fill_cub_player(t_map *map, int x, int y, int color)
 {

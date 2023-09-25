@@ -1,26 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   rendering.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: niboukha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 15:19:36 by niboukha          #+#    #+#             */
-/*   Updated: 2023/09/25 15:26:15 by niboukha         ###   ########.fr       */
+/*   Updated: 2023/09/25 20:46:33 by niboukha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-#define CUB3D_H
-
-#include <stdio.h>
-#include <mlx.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <sys/stat.h>
-#include <fcntl.h>
-#include <string.h>
-#include <math.h>
+#ifndef RENDERING_H
+#define RENDERING_H
 
 # define A 97
 # define S 115
@@ -40,6 +31,8 @@ typedef struct t_coor
 	int			y;
 	int			py;
 	int			px;
+	int			px1;
+	int			py1;
 	int			put;
 	double		d_h;
 	double		d_v;
@@ -68,19 +61,21 @@ typedef struct t_wall
 	double	v_y;
 	double	gv_x;
 	double	gv_y;
+	double	wall_height;
 }			t_wall;
-
 
 typedef struct t_map
 {
 	void	*mlx;
 	void	*mlx_win;
 	void	*mlx_win1;
+	void	*mlx_win2;
 	char	**map;
 	t_coor	coor;
 	t_wall	wall;
 	t_image	img;
 	t_image	image;
+	t_image	img_m;
 }			t_map;
 
 void	put_pixel(t_map *map);
@@ -105,5 +100,8 @@ void	draw_rays(t_map *map, double angle);
 double	distance_wall(t_map *map, double x, double y);
 
 
+
+void	fill_cub_pxl(t_map *map, int x, int y, int color);
+void	fill_cub_p(t_map *map, int x, int y, int color);
 
 #endif

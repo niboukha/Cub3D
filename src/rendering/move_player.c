@@ -6,11 +6,11 @@
 /*   By: niboukha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 16:51:37 by niboukha          #+#    #+#             */
-/*   Updated: 2023/09/25 12:03:21 by niboukha         ###   ########.fr       */
+/*   Updated: 2023/09/25 20:50:33 by niboukha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../../includes/cub3d.h"
 
 void	move_player(t_map *map, int x, int y)
 {
