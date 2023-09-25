@@ -81,3 +81,34 @@ void	inter_ver_wall(t_map *map, int x, int y, double angle)
 		map->wall.v_y = y + (x - map->wall.v_x) * tan(2 * M_PI - angle);
 	draw_cub_ver(map, map->wall.v_x, map->wall.v_y, angle);
 }
+
+///////inter/////////////
+
+	// if (x < map->coor.x * 64 && y < map->coor.y * 64
+	// 	&& x > 0 && y > 0)
+	// 	my_mlx_put_pixel(&map->img, roundf(x) ,
+	// 		roundf(y) , 0xFF0000);
+		// fill_cub_player(map, x, y, 0x0000);
+
+
+void	coor_of_ver_wall(t_map *map,double x,double y)
+{
+	map->coor.d_v = sqrt(pow(map->coor.x * 64, 2) + pow(map->coor.y * 64, 2));
+	while ((int)x < map->coor.x * 64 && (int)y < map->coor.y * 64
+		&& (int)x >= 0 && (int)y >= 0
+		&& !check_if_wall(map, x, y))
+	{
+		//fill_cub_player(map, x, y, 0xff0000);
+		x += map->wall.gv_x;
+		y += map->wall.gv_y;
+	}
+	if ((int)x < map->coor.x * 64 && (int)y < map->coor.y * 64
+		&& (int)x >= 0 && (int)y >= 0
+		&& check_if_wall(map, x, y))
+		map->coor.d_v = distance_wall(map, x, y);
+	// if (x < map->coor.x * 64 && y < map->coor.y * 64
+	// 	&& x > 0 && y > 0)
+	// 	my_mlx_put_pixel(&map->img, roundf(x) ,
+	// 		roundf(y) , 0xFF0000);
+		// fill_cub_player(map, x, y, 0x0000);
+}

@@ -6,7 +6,7 @@
 /*   By: niboukha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 15:19:31 by niboukha          #+#    #+#             */
-/*   Updated: 2023/09/23 17:33:00 by niboukha         ###   ########.fr       */
+/*   Updated: 2023/09/25 14:58:00 by niboukha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,28 +20,19 @@ void	init_map(t_map *map)
 	map->map[2] = "10000000001";
 	map->map[3] = "100N0001001";
 	map->map[4] = "10000000001";
-	map->map[5] = "10001000001";
+	map->map[5] = "10001001001";
 	map->map[6] = "10001000001";
 	map->map[7] = "10001000001";
 	map->map[8] = "10001000001";
 	map->map[9] = "11111111111";
 	map->coor.x = strlen(map->map[0]);
 	map->coor.y = 10;
-	map->coor.new_i = 0;
-	map->coor.new_j = 0;
 	map->coor.angle = 0;
 	map->coor.put = 0;
-	map->coor.d = 0;
-	map->coor.d_h = 0;
-	map->coor.d_v = 0;
 	map->wall.x = 0;
 	map->wall.y = 0;
 	map->wall.h_x = 0;
 	map->wall.h_y = 0;
-	map->wall.gh_x = 0;
-	map->wall.gh_y = 0;
-	map->wall.gv_x= 0;
-	map->wall.gv_y = 0;
 	map->wall.v_x = 0;
 	map->wall.v_y = 0;
 }

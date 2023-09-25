@@ -6,7 +6,7 @@
 /*   By: niboukha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 09:52:32 by niboukha          #+#    #+#             */
-/*   Updated: 2023/09/23 17:47:27 by niboukha         ###   ########.fr       */
+/*   Updated: 2023/09/25 15:17:18 by niboukha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,13 @@ void	fill_map3(t_map *map)
 	}
 }
 
-void	draw_walls(t_map *map, int color)
+void	draw_walls(t_map *map, int color, double angle)
 {
 	int	j;
 	double	wall_height;
 
-	wall_height = roundf(30000 / map->coor.d);
+	(void)angle;
+	wall_height = roundf(30000 / (map->coor.d * cos(angle - map->coor.angle))) ;
 	j = (H_WIN / 2) - (wall_height / 2);
 	if (j < 0)
 		j = 0;
