@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   split_file.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: niboukha <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: m-boukel <m-boukel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 12:05:13 by m-boukel          #+#    #+#             */
-/*   Updated: 2023/09/23 18:06:01 by niboukha         ###   ########.fr       */
+/*   Updated: 2023/09/26 03:44:24 by m-boukel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ void split_file(t_data *data)
 {
 	int i;
 
-	data->files->D = NULL;
-	data->files->Clr = NULL;
+	data->files->d = NULL;
+	data->files->clr = NULL;
 	data->files->map = NULL;
 	i = 0;
 	if (data->files->file)
@@ -46,13 +46,13 @@ void split_file(t_data *data)
 			if (ft_strncmp(data->files->file[i], "NO ", 3) == 0 || ft_strncmp(data->files->file[i], "EA ", 3) == 0
 					||ft_strncmp(data->files->file[i], "WE ", 3) == 0|| ft_strncmp(data->files->file[i], "SO ", 3) == 0)
 			{
-					data->files->D = ft_strjoin(data->files->D, data->files->file[i]);
-					data->files->D = ft_strjoin(data->files->D, "\n");
+					data->files->d = ft_strjoin(data->files->d, data->files->file[i]);
+					data->files->d = ft_strjoin(data->files->d, "\n");
 			}
 			else if (ft_strncmp(data->files->file[i], "F ", 2) == 0 || ft_strncmp(data->files->file[i], "C ", 2) == 0)
 			{
-					data->files->Clr = ft_strjoin(data->files->Clr, data->files->file[i]);
-					data->files->Clr = ft_strjoin(data->files->Clr, "\n");
+					data->files->clr = ft_strjoin(data->files->clr, data->files->file[i]);
+					data->files->clr = ft_strjoin(data->files->clr, "\n");
 			}
 			else if(is_map(data->files->file[i]))
 			{

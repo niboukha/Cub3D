@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: niboukha <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: m-boukel <m-boukel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 13:04:16 by m-boukel          #+#    #+#             */
-/*   Updated: 2023/09/25 20:53:00 by niboukha         ###   ########.fr       */
+/*   Updated: 2023/09/26 03:48:00 by m-boukel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,26 +23,7 @@ int	main(int ac, char **av)
 	fd = open(av[1], O_RDONLY);
 	if (fd == -1)
 		return (perror("Error"), 0);
-	read_file(&data, fd);
-	split_file(&data);
-	if (check_Deriction(&data))
-	{
-		ft_putstr_fd("Error : Deriction not valid\n", 2);
-		// sould free data->deriction
+	if (parsing(data, fd) == 1)
 		return (0);
-	}
-	if (check_colors(&data))
-	{
-		ft_putstr_fd("Error : Colors not valid\n", 2);
-		// sould free data->Clr
-		return (0);
-	}
-	check_map(&data);
-	// for(int i = 0; i < 1; i++)
-	// 	printf("%s\n", data.files->D);
-	// for(int i = 0; i < 1; i++)
-	// 	printf("%s\n", data.files->Clr);
-	// for(int i = 0; i < 1; i++)
-	// 	printf("%s\n", data.files->map);
 	return (0);
 }

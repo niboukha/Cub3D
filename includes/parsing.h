@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pars.h                                             :+:      :+:    :+:   */
+/*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: niboukha <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: m-boukel <m-boukel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 12:58:47 by m-boukel          #+#    #+#             */
-/*   Updated: 2023/09/25 20:45:24 by niboukha         ###   ########.fr       */
+/*   Updated: 2023/09/26 03:49:12 by m-boukel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,26 +29,27 @@ typedef struct s_color
 
 typedef struct c_c //color and coord
 {
-    t_color *F;
-    t_color *C;
+    t_color *f;
+    t_color *c;
     int    floor;
     int    ceiling;
 }               t_c_c;
 
 typedef struct s_deriction
 {
-    int     NO;
-    int     SO;
-    int     WE;
-    int     EA;
+    int     no;
+    int     so;
+    int     we;
+    int     ea;
 }               t_deriction;
 
 typedef struct files
 {
 	char	**file;
-	char	*D;
-	char	*Clr;
+	char	*d;
+	char	*clr;
 	char	*map;
+    char    **map_splited;
 }				t_files;
 
 typedef struct data
@@ -70,5 +71,6 @@ void     split_file(t_data *data);
 int     check_Deriction(t_data *data);
 int     check_colors(t_data *data);
 int     ft_new_atoi(char *str);
+int     parsing(t_data data, int fd);
 
 #endif

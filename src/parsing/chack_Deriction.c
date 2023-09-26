@@ -6,7 +6,7 @@
 /*   By: m-boukel <m-boukel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 11:21:10 by m-boukel          #+#    #+#             */
-/*   Updated: 2023/09/13 11:41:48 by m-boukel         ###   ########.fr       */
+/*   Updated: 2023/09/26 03:43:30 by m-boukel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,20 @@ void    fill_derictio(t_data *data, char **str)
 
     i = 0;
     data->deriction = malloc(sizeof(t_deriction));
-    data->deriction->NO = 0;
-    data->deriction->SO = 0;
-    data->deriction->WE = 0;
-    data->deriction->EA = 0;
+    data->deriction->no = 0;
+    data->deriction->so = 0;
+    data->deriction->we = 0;
+    data->deriction->ea = 0;
     while (str[i])
     {
         if (str[i][0] == 'N' && str[i][1] == 'O')
-            data->deriction->NO = 1;
+            data->deriction->no = 1;
         else if (str[i][0] == 'S' && str[i][1] == 'O')
-            data->deriction->SO = 1;
+            data->deriction->so = 1;
         else if (str[i][0] == 'W' && str[i][1] == 'E')
-            data->deriction->WE = 1;
+            data->deriction->we = 1;
         else if (str[i][0] == 'E' && str[i][1] == 'A')
-            data->deriction->EA = 1;
+            data->deriction->ea = 1;
         i++;
     }
 }
@@ -44,14 +44,14 @@ int    check_Deriction(t_data *data)
     int     j;
 
     i = 0;
-    str = ft_split(data->files->D, '\n');
+    str = ft_split(data->files->d, '\n');
     while (str[i])
         i++;
     if (i > 4)
         return (1);
     i = 0;
     fill_derictio(data, str);
-    if (!(data->deriction->NO == 1 && data->deriction->SO == 1 && data->deriction->WE == 1 && data->deriction->EA == 1))
+    if (!(data->deriction->no == 1 && data->deriction->so == 1 && data->deriction->we == 1 && data->deriction->ea == 1))
         return (1);
     while (str[i])
     {

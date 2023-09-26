@@ -6,7 +6,7 @@
 /*   By: m-boukel <m-boukel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 11:43:10 by m-boukel          #+#    #+#             */
-/*   Updated: 2023/09/15 05:21:19 by m-boukel         ###   ########.fr       */
+/*   Updated: 2023/09/26 03:40:30 by m-boukel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ void    fill_colors(t_data *data, char **lines)
     int j;
     
     data->c_c = malloc(sizeof(t_c_c));
-    data->c_c->F = malloc(sizeof(t_color));
-    data->c_c->C = malloc(sizeof(t_color));
+    data->c_c->f = malloc(sizeof(t_color));
+    data->c_c->c = malloc(sizeof(t_color));
     data->c_c->floor = 0;
     data->c_c->ceiling = 0;
     if (ft_strncmp(lines[0], "F ", 2) == 0)
@@ -28,18 +28,18 @@ void    fill_colors(t_data *data, char **lines)
         while (lines[0][j])
         {
             if (lines[0][j] == ',')
-                data->c_c->F->error += 1;
+                data->c_c->f->error += 1;
             j++;
         }
-        if (data->c_c->F->error != 2)
+        if (data->c_c->f->error != 2)
         {
             ft_putstr_fd("Error : Invalid color\n", 2);
             exit(EXIT_FAILURE);
         }
         data->c_c->floor += 1;
-        data->c_c->F->r = ft_new_atoi(lines[0] + 2);
-        data->c_c->F->g = ft_new_atoi(ft_strchr(lines[0] + 2, ',') + 1);
-        data->c_c->F->b = ft_new_atoi(ft_strchr(ft_strchr(lines[0] + 2, ',') + 1, ',') + 1);
+        data->c_c->f->r = ft_new_atoi(lines[0] + 2);
+        data->c_c->f->g = ft_new_atoi(ft_strchr(lines[0] + 2, ',') + 1);
+        data->c_c->f->b = ft_new_atoi(ft_strchr(ft_strchr(lines[0] + 2, ',') + 1, ',') + 1);
     }
     else if (ft_strncmp(lines[1], "F ", 2) == 0)
     {
@@ -47,18 +47,18 @@ void    fill_colors(t_data *data, char **lines)
         while (lines[1][j])
         {
             if (lines[1][j] == ',')
-                data->c_c->F->error += 1;
+                data->c_c->f->error += 1;
             j++;
         }
-        if (data->c_c->F->error != 2)
+        if (data->c_c->f->error != 2)
         {
             ft_putstr_fd("Error : Invalid color\n", 2);
             exit(EXIT_FAILURE);
         }
         data->c_c->floor += 1;
-        data->c_c->F->r = ft_new_atoi(lines[1] + 2);
-        data->c_c->F->g = ft_new_atoi(ft_strchr(lines[1] + 2, ',') + 1);
-        data->c_c->F->b = ft_new_atoi(ft_strchr(ft_strchr(lines[1] + 2, ',') + 1, ',') + 1);
+        data->c_c->f->r = ft_new_atoi(lines[1] + 2);
+        data->c_c->f->g = ft_new_atoi(ft_strchr(lines[1] + 2, ',') + 1);
+        data->c_c->f->b = ft_new_atoi(ft_strchr(ft_strchr(lines[1] + 2, ',') + 1, ',') + 1);
     }
     if (ft_strncmp(lines[0], "C ", 2) == 0)
     {
@@ -66,18 +66,18 @@ void    fill_colors(t_data *data, char **lines)
         while (lines[0][j])
         {
             if (lines[0][j] == ',')
-                data->c_c->C->error += 1;
+                data->c_c->c->error += 1;
             j++;
         }
-        if (data->c_c->C->error != 2)
+        if (data->c_c->c->error != 2)
         {
             ft_putstr_fd("Error : Invalid color\n", 2);
             exit(EXIT_FAILURE);
         }
         data->c_c->ceiling += 1;
-        data->c_c->C->r = ft_new_atoi(lines[0] + 2);
-        data->c_c->C->g = ft_new_atoi(ft_strchr(lines[0] + 2, ',') + 1);
-        data->c_c->C->b = ft_new_atoi(ft_strchr(ft_strchr(lines[0] + 2, ',') + 1, ',') + 1);
+        data->c_c->c->r = ft_new_atoi(lines[0] + 2);
+        data->c_c->c->g = ft_new_atoi(ft_strchr(lines[0] + 2, ',') + 1);
+        data->c_c->c->b = ft_new_atoi(ft_strchr(ft_strchr(lines[0] + 2, ',') + 1, ',') + 1);
     }
     else if (ft_strncmp(lines[1], "C ", 2) == 0)
     {
@@ -85,18 +85,18 @@ void    fill_colors(t_data *data, char **lines)
         while (lines[1][j])
         {
             if (lines[1][j] == ',')
-                data->c_c->C->error += 1;
+                data->c_c->c->error += 1;
             j++;
         }
-        if (data->c_c->C->error != 2)
+        if (data->c_c->c->error != 2)
         {
             ft_putstr_fd("Error : Invalid color\n", 2);
             exit(EXIT_FAILURE);
         }
         data->c_c->ceiling += 1;
-        data->c_c->C->r = ft_new_atoi(lines[1] + 2);
-        data->c_c->C->g = ft_new_atoi(ft_strchr(lines[1] + 2, ',') + 1);
-        data->c_c->C->b = ft_new_atoi(ft_strchr(ft_strchr(lines[1] + 2, ',') + 1, ',') + 1);
+        data->c_c->c->r = ft_new_atoi(lines[1] + 2);
+        data->c_c->c->g = ft_new_atoi(ft_strchr(lines[1] + 2, ',') + 1);
+        data->c_c->c->b = ft_new_atoi(ft_strchr(ft_strchr(lines[1] + 2, ',') + 1, ',') + 1);
     }
    
 }
@@ -108,12 +108,12 @@ int     check_colors(t_data *data)
     int     i;
 
     i = 0;
-    str = ft_split(data->files->Clr, ' ');
+    str = ft_split(data->files->clr, ' ');
     while (str[i])      
         i++;
     if (i != 3)
         return (1);
-    lines = ft_split(data->files->Clr, '\n');
+    lines = ft_split(data->files->clr, '\n');
     i = 0;
     while (lines[i])
     {
@@ -124,13 +124,13 @@ int     check_colors(t_data *data)
     fill_colors(data, lines);
     if (data->c_c->floor != 1 || data->c_c->ceiling != 1)
         return (1);
-    else if ((data->c_c->F->r < 0 || data->c_c->F->r > 255) || (data->c_c->C->r < 0 || data->c_c->C->r > 255))
+    else if ((data->c_c->f->r < 0 || data->c_c->f->r > 255) || (data->c_c->c->r < 0 || data->c_c->c->r > 255))
         return (1);
-    else if ((data->c_c->F->g < 0 || data->c_c->F->g > 255) || (data->c_c->C->g < 0 || data->c_c->C->g > 255))
+    else if ((data->c_c->f->g < 0 || data->c_c->f->g > 255) || (data->c_c->c->g < 0 || data->c_c->c->g > 255))
         return (1);
-    else if ((data->c_c->F->b < 0 || data->c_c->F->b > 255) || (data->c_c->C->b < 0 || data->c_c->C->b > 255))
+    else if ((data->c_c->f->b < 0 || data->c_c->f->b > 255) || (data->c_c->c->b < 0 || data->c_c->c->b > 255))
         return (1);
-    else if (data->c_c->F->error != 2 || data->c_c->C->error != 2)
+    else if (data->c_c->f->error != 2 || data->c_c->c->error != 2)
         return (1);
     return (0);
 }

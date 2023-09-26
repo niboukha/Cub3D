@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: niboukha <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: m-boukel <m-boukel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 12:58:47 by m-boukel          #+#    #+#             */
-/*   Updated: 2023/09/25 20:47:09 by niboukha         ###   ########.fr       */
+/*   Updated: 2023/09/26 03:42:24 by m-boukel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "./lib.h"
 # include "./get_next_line.h"
 #include "./rendering.h"
-#include "./pars.h"
+#include "./parsing.h"
 #include <math.h>
 #include <fcntl.h>
 #include <stdio.h>
