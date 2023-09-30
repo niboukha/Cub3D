@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   pars.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: m-boukel <m-boukel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: niboukha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 03:34:30 by m-boukel          #+#    #+#             */
-/*   Updated: 2023/09/26 04:05:25 by m-boukel         ###   ########.fr       */
+/*   Updated: 2023/09/30 09:54:30 by niboukha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
 
-int    parsing(t_data data, int fd)
+int	parsing(t_data data, t_map *map, int fd)
 {
-    read_file(&data, fd);
+	read_file(&data, fd);
 	split_file(&data);
 	if (check_Deriction(&data))
 	{
@@ -30,6 +30,6 @@ int    parsing(t_data data, int fd)
 		return (1);
 	}
 	check_map(&data);
-    data.files->map_splited = ft_split(data.files->map, '\n');
-    return (0);
+	map->map = ft_split(data.files->map, '\n');
+	return (0);
 }

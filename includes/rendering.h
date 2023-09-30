@@ -6,7 +6,7 @@
 /*   By: niboukha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 15:19:36 by niboukha          #+#    #+#             */
-/*   Updated: 2023/09/25 20:46:33 by niboukha         ###   ########.fr       */
+/*   Updated: 2023/09/30 12:30:43 by niboukha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,17 +27,17 @@
 
 typedef struct t_coor
 {
-	int			x;
-	int			y;
-	int			py;
-	int			px;
-	int			px1;
-	int			py1;
-	int			put;
-	double		d_h;
-	double		d_v;
-	double		d;
-	double		angle;
+	int		x;
+	int		y;
+	int		py;
+	int		px;
+	int		px1;
+	int		py1;
+	int		put;
+	double	d_h;
+	double	d_v;
+	double	d;
+	double	angle;
 }				t_coor;
 
 typedef struct t_image
@@ -103,5 +103,7 @@ double	distance_wall(t_map *map, double x, double y);
 
 void	fill_cub_pxl(t_map *map, int x, int y, int color);
 void	fill_cub_p(t_map *map, int x, int y, int color);
+
+int	exit_prog(void);
 
 #endif
