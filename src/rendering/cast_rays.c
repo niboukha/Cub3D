@@ -6,7 +6,7 @@
 /*   By: niboukha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 09:52:32 by niboukha          #+#    #+#             */
-/*   Updated: 2023/09/30 10:11:27 by niboukha         ###   ########.fr       */
+/*   Updated: 2023/09/30 21:20:52 by niboukha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,7 @@ void	fill_map3(t_map *map)
 		j = 0;
 		while (j < H_WIN)
 		{
-			my_mlx_put_pixel(&map->image, i,
-			j, 0x000000);
+			my_mlx_put_pixel(&map->image, i, j, 0x000000);
 			j++;
 		}
 		i++;
@@ -35,7 +34,8 @@ void	draw_walls(t_map *map, int color, double angle)
 {
 	int	j;
 
-	map->wall.wall_height = roundf(30000 / (map->coor.d * cos(angle - map->coor.angle))) ;
+	map->wall.wall_height =
+		roundf(50000 / (map->coor.d * cos(angle - map->coor.angle))) ;
 	j = (H_WIN / 2) - (map->wall.wall_height / 2);
 	if (j < 0)
 		j = 0;

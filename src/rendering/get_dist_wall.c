@@ -6,7 +6,7 @@
 /*   By: niboukha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 15:01:54 by niboukha          #+#    #+#             */
-/*   Updated: 2023/09/25 20:50:16 by niboukha         ###   ########.fr       */
+/*   Updated: 2023/09/30 20:57:53 by niboukha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	check_if_wall(t_map *map, int x, int y)
 	int	j;
 
 	i = 0;
-	while (i < 10)
+	while (map->map[i])
 	{
 		j = 0;
 		while (map->map[i][j])
@@ -42,8 +42,6 @@ int	player_collisions(t_map *map, int x, int y)
 		if (check_if_wall(map, x + roundf(cos(angle) * 15),
 			y + roundf(sin(angle) * 15)) == 1)
 			return (1);
-		// my_mlx_put_pixel(&map->img, x + roundf(cos(angle) * 15),
-		// 	y + roundf(sin(angle) * 15), 0xFF0000);
 		angle += 0.1;
 	}
 	return (0);
@@ -65,12 +63,12 @@ void	get_dist_wall(t_map *map, int color)
 		if (map->coor.d_h < map->coor.d_v)
 		{
 			map->coor.d = map->coor.d_h;
-			color = 0xff00f0;
+			color = 0x00ff00;
 		}
 		else
 		{
 			map->coor.d = map->coor.d_v;
-			color = 0xff0000;
+			color = 0xff00f0;
 		}
 		draw_rays(map, angle);
 		draw_walls(map, color, angle);

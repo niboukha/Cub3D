@@ -6,7 +6,7 @@
 /*   By: niboukha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 15:19:36 by niboukha          #+#    #+#             */
-/*   Updated: 2023/09/30 12:30:43 by niboukha         ###   ########.fr       */
+/*   Updated: 2023/09/30 20:54:09 by niboukha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,6 @@ typedef struct t_coor
 	int		y;
 	int		py;
 	int		px;
-	int		px1;
-	int		py1;
 	int		put;
 	double	d_h;
 	double	d_v;
@@ -69,13 +67,11 @@ typedef struct t_map
 	void	*mlx;
 	void	*mlx_win;
 	void	*mlx_win1;
-	void	*mlx_win2;
 	char	**map;
 	t_coor	coor;
 	t_wall	wall;
-	t_image	img;
 	t_image	image;
-	t_image	img_m;
+	t_image	img;
 }			t_map;
 
 void	put_pixel(t_map *map);

@@ -3,37 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   pars.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: m-boukel <m-boukel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: niboukha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 03:34:30 by m-boukel          #+#    #+#             */
-/*   Updated: 2023/09/30 13:59:44 by m-boukel         ###   ########.fr       */
+/*   Updated: 2023/09/30 21:16:54 by niboukha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-void	get_pos(t_data *data, char **map)
+void	get_pos(char **map, t_map	*ma)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 
 	i = 0;
+	ma->coor.y = 0;
 	while (map[i])
 	{
 		j = 0;
 		while (map[i][j])
-		{	
-			if (map[i][j] == 'N' || map[i][j] == 'S' || map[i][j] == 'E' || map[i][j] == 'W')
-			{
-				data->pos->x = i;
-				data->pos->y = j;
-				data->pos->dir = map[i][j];
-				return ;
-			}
+		{
 			j++;
+			if (j > ma->coor.y)
+				ma->coor.x = j;
 		}
 		i++;
 	}
+	ma->coor.y = i;
 }
 
 int	parsing(t_data data, t_map *map, int fd)
@@ -54,6 +51,6 @@ int	parsing(t_data data, t_map *map, int fd)
 	}
 	check_map(&data);
 	map->map = ft_split(data.files->map, '\n');
-	get_pos(&data, map->map);
+	get_pos(map->map, map);
 	return (0);
 }

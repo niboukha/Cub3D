@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_colors.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: m-boukel <m-boukel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: niboukha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 11:43:10 by m-boukel          #+#    #+#             */
-/*   Updated: 2023/09/30 12:51:09 by m-boukel         ###   ########.fr       */
+/*   Updated: 2023/09/30 17:08:05 by niboukha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 void    fill_colors(t_data *data, char **lines)
 {
     int j;
-    
+
     data->c_c = malloc(sizeof(t_c_c));
     data->c_c->f = malloc(sizeof(t_color));
     data->c_c->c = malloc(sizeof(t_color));
@@ -33,7 +33,6 @@ void    fill_colors(t_data *data, char **lines)
                 data->c_c->f->error += 1;
             j++;
         }
-        printf("error : %d\n", data->c_c->f->error);
         if (data->c_c->f->error != 2)
         {
             ft_putstr_fd("Error : Invalid color\n", 2);
@@ -101,11 +100,7 @@ void    fill_colors(t_data *data, char **lines)
         data->c_c->c->g = ft_new_atoi(ft_strchr(lines[1] + 2, ',') + 1);
         data->c_c->c->b = ft_new_atoi(ft_strchr(ft_strchr(lines[1] + 2, ',') + 1, ',') + 1);
     }
-    printf("floor : %d\n", data->c_c->floor);
-    printf("ceiling : %d\n", data->c_c->ceiling);
-    printf("error floor : %d\n", data->c_c->f->error);
-    printf("error ceiling : %d\n", data->c_c->c->error);
-    
+
 }
 
 int     check_colors(t_data *data)
@@ -116,7 +111,7 @@ int     check_colors(t_data *data)
 
     i = 0;
     str = ft_split(data->files->clr, ' ');
-    while (str[i])      
+    while (str[i])
         i++;
     if (i != 3)
         return (1);
@@ -128,7 +123,6 @@ int     check_colors(t_data *data)
     }
     if (i != 2)
         return (1);
-    // printf("1\n");
     fill_colors(data, lines);
     if (data->c_c->floor != 1 || data->c_c->ceiling != 1)
         return (1);
