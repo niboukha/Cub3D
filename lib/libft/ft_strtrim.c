@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aait-lfd <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: niboukha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 01:41:12 by aait-lfd          #+#    #+#             */
-/*   Updated: 2022/10/15 13:49:49 by aait-lfd         ###   ########.fr       */
+/*   Updated: 2023/10/01 17:30:04 by niboukha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,3 @@ char	*ft_strtrim(char const *s1, char const *set)
 		result = ft_strdup("");
 	return (result);
 }
-
-// int	main(int argc, char const *argv[])
-// {
-// 	argc++;
-// 	printf("%p", ft_strtrim(argv[1], argv[2]));
-// 	return (0);
-// }

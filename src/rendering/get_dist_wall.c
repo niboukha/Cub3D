@@ -6,7 +6,7 @@
 /*   By: niboukha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 15:01:54 by niboukha          #+#    #+#             */
-/*   Updated: 2023/09/30 20:57:53 by niboukha         ###   ########.fr       */
+/*   Updated: 2023/10/03 09:46:05 by niboukha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,9 @@
 
 int	check_if_wall(t_map *map, int x, int y)
 {
-	int	i;
-	int	j;
-
-	i = 0;
-	while (map->map[i])
-	{
-		j = 0;
-		while (map->map[i][j])
-		{
-			if (map->map[y / 64][x / 64] == '1')
-				return (1);
-			j++;
-		}
-		i++;
-	}
+	if ((x / 64) <= (int)ft_strlen(map->map[y / 64])
+		&& map->map[y / 64][x / 64] == '1')
+		return (1);
 	return (0);
 }
 
@@ -70,7 +58,6 @@ void	get_dist_wall(t_map *map, int color)
 			map->coor.d = map->coor.d_v;
 			color = 0xff00f0;
 		}
-		draw_rays(map, angle);
 		draw_walls(map, color, angle);
 		map->wall.x++;
 		angle += ((60.0 * M_PI) / (W_WIN * 180));

@@ -6,45 +6,64 @@
 /*   By: niboukha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 17:36:04 by niboukha          #+#    #+#             */
-/*   Updated: 2023/09/30 18:35:27 by niboukha         ###   ########.fr       */
+/*   Updated: 2023/10/03 09:53:45 by niboukha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-// void	fill_cub_pxl(t_map *map, int x, int y, int color)
-// {
-// 	int	i;
-// 	int	j;
 
-// 	i = 0;
-// 	while (i < 10)
-// 	{
-// 		j = 0;
-// 		while (j < 10)
-// 		{
-// 				my_mlx_put_pixel(&map->img_m, (x * 10) + j, (y * 10) + i, color);
-// 			j++;
-// 		}
-// 		i++;
-// 	}
-// }
+void	fill_minimap(t_map *map)
+{
+	int	i;
+	int	j;
+	int	e;
+	int	f;
 
-// void	fill_cub_p(t_map *map, int x, int y, int color)
-// {
-// 	int	i;
-// 	int	j;
+	i = 0;
+	e = map->coor.py - 75;
+	while (i < 150 && e < map->coor.py + 75)
+	{
+		j = 0;
+		f = map->coor.px - 100;
+		while (j < 200 && f < map->coor.px + 100)
+		{
+			if (map->map[e / 64][f / 64] == '1')
+				my_mlx_put_pixel(&map->image, j, i, 0xf0f0f0);
+			else if (map->map[e / 64][f / 64] == '0')
+				my_mlx_put_pixel(&map->image, j, i, 0x0000ff);
+			else
+				my_mlx_put_pixel(&map->image, j, i, 0x0000);
+			if (map->map[e / 64][f / 64] == 'N' || map->map[e / 64][f / 64] == 'E'
+				|| map->map[e / 64][f / 64] == 'W' || map->map[e / 64][f / 64] == 'S')
+			{
+				my_mlx_put_pixel(&map->image, j, i, 0x0000ff);
+				map->coor.m_x = 100;
+				map->coor.m_y = 75;
+			}
+			f++;
+			j++;
+		}
+		e++;
+		i++;
+	}
+}
 
-// 	i = y - 2;
-// 	while (i <= y + 2 && i >= 0)
-// 	{
-// 		j = x - 2;
-// 		while (j <= x + 2 && j >= 0)
-// 		{
-// 			my_mlx_put_pixel(&map->img_m, j, i, color);
-// 			j++;
-// 		}
-// 		i++;
-// 	}
-// }
+void	fill_cub_p(t_map *map, int x, int y, int color)
+{
+	int	i;
+	int	j;
+
+	i = y - 2;
+	while (i <= y + 2 && i >= 0)
+	{
+		j = x - 2;
+		while (j <= x + 2 && j >= 0)
+		{
+			my_mlx_put_pixel(&map->image, j, i, color);
+			j++;
+		}
+		i++;
+	}
+}
 

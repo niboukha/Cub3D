@@ -6,7 +6,7 @@
 /*   By: niboukha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 15:19:36 by niboukha          #+#    #+#             */
-/*   Updated: 2023/09/30 20:54:09 by niboukha         ###   ########.fr       */
+/*   Updated: 2023/10/01 13:44:15 by niboukha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ typedef struct t_coor
 	int		y;
 	int		py;
 	int		px;
+	int		m_x;
+	int		m_y;
 	int		put;
 	double	d_h;
 	double	d_v;
@@ -101,5 +103,7 @@ void	fill_cub_pxl(t_map *map, int x, int y, int color);
 void	fill_cub_p(t_map *map, int x, int y, int color);
 
 int	exit_prog(void);
+
+void	fill_minimap(t_map *map);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: niboukha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 18:20:17 by niboukha          #+#    #+#             */
-/*   Updated: 2023/09/25 20:50:23 by niboukha         ###   ########.fr       */
+/*   Updated: 2023/10/01 17:54:46 by niboukha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 void	inter_ver_wall(t_map *map, double angle)
 {
-	if ((angle >= 0 && angle <= (M_PI / 2)) || (angle >= (3 * M_PI / 2) && angle <= (2 * M_PI)))
+	if ((angle >= 0 && angle <= (M_PI / 2))
+		|| (angle >= (3 * M_PI / 2) && angle <= (2 * M_PI)))
 	{
 		map->wall.gv_x = 64;
 		map->wall.v_x = (map->coor.px / 64) * 64 + 64;

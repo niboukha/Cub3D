@@ -6,7 +6,7 @@
 /*   By: niboukha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 03:34:30 by m-boukel          #+#    #+#             */
-/*   Updated: 2023/09/30 21:16:54 by niboukha         ###   ########.fr       */
+/*   Updated: 2023/10/03 11:19:45 by niboukha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,14 @@ void	get_pos(char **map, t_map	*ma)
 
 	i = 0;
 	ma->coor.y = 0;
+	ma->coor.x = 0;
 	while (map[i])
 	{
 		j = 0;
 		while (map[i][j])
 		{
 			j++;
-			if (j > ma->coor.y)
+			if (j > ma->coor.x)
 				ma->coor.x = j;
 		}
 		i++;

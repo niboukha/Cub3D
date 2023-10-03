@@ -6,7 +6,7 @@
 /*   By: niboukha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 16:51:37 by niboukha          #+#    #+#             */
-/*   Updated: 2023/09/30 19:53:02 by niboukha         ###   ########.fr       */
+/*   Updated: 2023/10/03 09:40:38 by niboukha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,12 @@ void	move_player(t_map *map, int x, int y)
 	{
 		map->coor.py = y;
 		map->coor.px = x;
+		if (!player_collisions(map, x / 64, y / 64))
+		{
+			map->coor.m_x = x / 64;
+			map->coor.m_y = y / 64;
+		}
+
 	}
 }
 
