@@ -6,7 +6,7 @@
 /*   By: niboukha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 15:19:36 by niboukha          #+#    #+#             */
-/*   Updated: 2023/10/04 12:22:22 by niboukha         ###   ########.fr       */
+/*   Updated: 2023/10/04 13:21:23 by niboukha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,9 +80,9 @@ typedef struct t_map
 	t_image	img;
 }			t_map;
 
+void	rendering(t_map	*map);
+
 void	put_pixel(t_map *map);
-void	fill_cub_player(t_map *map, int x, int y, int color);
-void	fill_cub_pixels(t_map *map, int x, int y, int color);
 void	my_mlx_put_pixel(t_image *img, int x, int y, int color);
 int		key(int key_code, t_map *map);
 void	get_dist_wall(t_map *map, int color);
@@ -98,15 +98,12 @@ void	inter_hori_wall(t_map *map, double angle);
 void	coor_of_ver_wall(t_map *map,double x,double y);
 void	coor_of_hor_wall(t_map *map, double x, double y);
 
-void	draw_rays(t_map *map, double angle);
 double	distance_wall(t_map *map, double x, double y);
 
-
-
-void	fill_cub_pxl(t_map *map, int x, int y, int color);
+void	init_map(t_map *map);
 void	fill_cub_p(t_map *map, int x, int y, int color);
 
-int	exit_prog(void);
+int		close_win(void);
 
 void	fill_minimap(t_map *map);
 

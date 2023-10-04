@@ -6,11 +6,25 @@
 /*   By: niboukha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 15:26:19 by niboukha          #+#    #+#             */
-/*   Updated: 2023/09/25 20:50:41 by niboukha         ###   ########.fr       */
+/*   Updated: 2023/10/04 13:18:14 by niboukha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
+
+void	init_map(t_map *map)
+{
+	map->coor.px = 0;
+	map->coor.py = 0;
+	map->wall.x = 0;
+	map->wall.y = 0;
+	map->coor.put = 0;
+}
+
+int	close_win(void)
+{
+	exit(0);
+}
 
 double	distance_wall(t_map *map, double x, double y)
 {

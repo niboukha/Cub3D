@@ -6,7 +6,7 @@
 /*   By: niboukha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 17:36:04 by niboukha          #+#    #+#             */
-/*   Updated: 2023/10/03 09:53:45 by niboukha         ###   ########.fr       */
+/*   Updated: 2023/10/04 14:43:37 by niboukha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,14 @@ void	fill_minimap(t_map *map)
 
 	i = 0;
 	e = map->coor.py - 75;
+	if (e < 0)
+		e = 0;
 	while (i < 150 && e < map->coor.py + 75)
 	{
 		j = 0;
 		f = map->coor.px - 100;
+		if (f < 0)
+			f = 0;
 		while (j < 200 && f < map->coor.px + 100)
 		{
 			if (map->map[e / 64][f / 64] == '1')

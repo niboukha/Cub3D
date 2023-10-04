@@ -6,7 +6,7 @@
 /*   By: niboukha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 15:01:54 by niboukha          #+#    #+#             */
-/*   Updated: 2023/10/04 12:23:41 by niboukha         ###   ########.fr       */
+/*   Updated: 2023/10/04 13:25:13 by niboukha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,8 @@ int	player_collisions(t_map *map, int x, int y)
 	angle = 0;
 	while (angle <= 2 * M_PI)
 	{
-		if (check_if_wall(map, x + roundf(cos(angle) * 10),
-			y + roundf(sin(angle) * 10)) == 1)
+		if (check_if_wall(map, x + roundf(cos(angle) * 5),
+			y + roundf(sin(angle) * 5)) == 1)
 			return (1);
 		angle += 0.1;
 	}
