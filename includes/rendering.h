@@ -6,7 +6,7 @@
 /*   By: niboukha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 15:19:36 by niboukha          #+#    #+#             */
-/*   Updated: 2023/10/01 13:44:15 by niboukha         ###   ########.fr       */
+/*   Updated: 2023/10/04 12:22:22 by niboukha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,10 @@ typedef struct t_coor
 	double	d_v;
 	double	d;
 	double	angle;
+	int		up;
+	int		down;
+	int		right;
+	int		left;
 }				t_coor;
 
 typedef struct t_image

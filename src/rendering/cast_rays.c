@@ -6,7 +6,7 @@
 /*   By: niboukha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 09:52:32 by niboukha          #+#    #+#             */
-/*   Updated: 2023/10/01 11:18:42 by niboukha         ###   ########.fr       */
+/*   Updated: 2023/10/03 14:05:35 by niboukha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,11 @@ void	fill_map3(t_map *map)
 void	draw_walls(t_map *map, int color, double angle)
 {
 	int	j;
+	int	x;
 
-	map->wall.wall_height =
-		roundf(50000 / (map->coor.d * cos(angle - map->coor.angle))) ;
+	x = fabs(2 * tan(M_PI / 6) * (map->coor.d * cos(angle - map->coor.angle)));
+	map->wall.wall_height = ceil(64 * W_WIN / x);
+
 	j = (H_WIN / 2) - (map->wall.wall_height / 2);
 	if (j < 0)
 		j = 0;

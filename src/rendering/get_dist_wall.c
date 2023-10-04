@@ -6,7 +6,7 @@
 /*   By: niboukha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 15:01:54 by niboukha          #+#    #+#             */
-/*   Updated: 2023/10/03 09:46:05 by niboukha         ###   ########.fr       */
+/*   Updated: 2023/10/04 12:23:41 by niboukha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,44 @@
 
 int	check_if_wall(t_map *map, int x, int y)
 {
-	if ((x / 64) <= (int)ft_strlen(map->map[y / 64])
-		&& map->map[y / 64][x / 64] == '1')
+	int	i;
+	int	j;
+
+	if (map->coor.left == 1)
+		i = (x - 1) / 64;
+	else if (map->coor.right == 1)
+		i = (x + 1) / 64;
+	j = y / 64;
+	if (i >= 0 && j >= 0 && j < map->coor.y
+		&& i < (int)ft_strlen(map->map[j])
+		&& map->map[j][i] == '1')
+		return (1);
+
+	if (map->coor.up == 1)
+		j = (y - 1) / 64;
+	else if (map->coor.down == 1)
+		j = (y + 1) / 64;
+	i = x / 64;
+	if (i >= 0 && j >= 0 && j < map->coor.y
+		&& i < (int)ft_strlen(map->map[j])
+		&& map->map[j][i] == '1')
+			return (1);
+
+	if (map->coor.up == 1)
+		j = (y - 1) / 64;
+	else if (map->coor.down == 1)
+		j = (y + 1) / 64;
+	else
+		j = y / 64;
+	if (map->coor.left == 1)
+		i = (x - 1) / 64;
+	else if (map->coor.right == 1)
+		i = (x + 1) / 64;
+	else
+		i = x / 64;
+	if (i >= 0 && j >= 0 && j < map->coor.y
+		&& i < (int)ft_strlen(map->map[j])
+		&& map->map[j][i] == '1')
 		return (1);
 	return (0);
 }
@@ -27,8 +63,8 @@ int	player_collisions(t_map *map, int x, int y)
 	angle = 0;
 	while (angle <= 2 * M_PI)
 	{
-		if (check_if_wall(map, x + roundf(cos(angle) * 15),
-			y + roundf(sin(angle) * 15)) == 1)
+		if (check_if_wall(map, x + roundf(cos(angle) * 10),
+			y + roundf(sin(angle) * 10)) == 1)
 			return (1);
 		angle += 0.1;
 	}

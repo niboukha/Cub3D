@@ -6,7 +6,7 @@
 /*   By: niboukha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 15:59:16 by niboukha          #+#    #+#             */
-/*   Updated: 2023/10/03 09:21:57 by niboukha         ###   ########.fr       */
+/*   Updated: 2023/10/04 12:21:23 by niboukha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,19 @@
 
 void	inter_hori_wall(t_map *map, double angle)
 {
-	if (angle >= 0 && angle <= M_PI)
+	map->coor.up = 0;
+	map->coor.down = 0;
+	if (angle > 0 && angle < M_PI)
 	{
+		map->coor.down = 1;
 		map->wall.gh_y = 64;
 		map->wall.h_y = (map->coor.py / 64) * 64 + 64;
 	}
 	else
 	{
+		map->coor.up = 1;
 		map->wall.gh_y = -64;
-		map->wall.h_y = (map->coor.py / 64) * 64 - 1;
+		map->wall.h_y = (map->coor.py / 64) * 64;
 	}
 	map->wall.gh_x = map->wall.gh_y / tan(angle);
 	map->wall.h_x = map->coor.px + (map->wall.h_y - map->coor.py) / tan(angle);
@@ -31,16 +35,14 @@ void	inter_hori_wall(t_map *map, double angle)
 
 void	coor_of_hor_wall(t_map *map, double x, double y)
 {
-	map->coor.d_h = sqrt(pow(map->coor.x * 64, 2) + pow(map->coor.y * 64, 2));
 	while ((int)x < map->coor.x * 64 && (int)y < map->coor.y * 64
-		&& (int)x >= 0 && (int)y >= 0
+		&& x >= 0.0 && y >= 0.0
 		&& !check_if_wall(map, x, y))
 	{
 		x += map->wall.gh_x;
 		y += map->wall.gh_y;
 	}
-	if ((int)x <= map->coor.x * 64 && (int)y <= map->coor.y * 64
-		&& (int)x >= 0 && (int)y >= 0
-		&& check_if_wall(map, x, y))
-		map->coor.d_h = distance_wall(map, x, y);
+	map->coor.up = 0;
+	map->coor.down = 0;
+	map->coor.d_h = distance_wall(map, x, y);
 }
