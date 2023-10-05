@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_dist_wall.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: niboukha <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: xshel <xshel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 15:01:54 by niboukha          #+#    #+#             */
-/*   Updated: 2023/10/05 15:06:40 by niboukha         ###   ########.fr       */
+/*   Updated: 2023/10/05 15:43:13 by xshel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	check_if_wall(t_map *map, int x, int y)
 	return (0);
 }
 
-void	get_dist_wall(t_map *map, int color)
+void	get_dist_wall(t_map *map, int color, t_data *data)
 {
 	double	angle;
 
@@ -69,17 +69,18 @@ void	get_dist_wall(t_map *map, int color)
 			angle -= 2 * M_PI;
 		inter_hori_wall(map, angle);
 		inter_ver_wall(map, angle);
+		int vx;
 		if (map->coor.d_h < map->coor.d_v)
 		{
 			map->coor.d = map->coor.d_h;
-			color = 0x00ff00;
+			vx = map->wall.h_x % 64;
 		}
 		else
 		{
 			map->coor.d = map->coor.d_v;
-			color = 0xff00f0;
+			vx = map->wall.v_y % 64;
 		}
-		draw_walls(map, color, angle);
+		draw_walls(map, vx, angle, data);
 		map->wall.x++;
 		angle += ((60.0 * M_PI) / (W_WIN * 180));
 	}

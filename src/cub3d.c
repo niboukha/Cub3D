@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: niboukha <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: xshel <xshel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 13:04:16 by m-boukel          #+#    #+#             */
-/*   Updated: 2023/10/04 13:20:59 by niboukha         ###   ########.fr       */
+/*   Updated: 2023/10/05 15:44:05 by xshel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,6 @@ int	main(int ac, char **av)
 		return (perror("Error"), 0);
 	if (parsing(data, map, fd) == 1)
 		return (0);
-	rendering(map);
+	rendering(map, &data);
 	return (0);
 }
