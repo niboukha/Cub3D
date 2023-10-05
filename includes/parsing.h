@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: niboukha <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: xshel <xshel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 12:58:47 by m-boukel          #+#    #+#             */
-/*   Updated: 2023/09/30 17:00:12 by niboukha         ###   ########.fr       */
+/*   Updated: 2023/10/05 00:57:58 by xshel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,13 +64,13 @@ typedef struct data
 }					t_data;
 
 void	check_map(t_data *data);
-int	is_valid(char c);
-int	is_map(char *buffer);
+int		is_valid(char c);
+int		is_map(char *buffer);
 void	read_file(t_data *data, int fd);
 void	read_map(t_data *data, int fd);
 void	split_file(t_data *data);
-int	check_Deriction(t_data *data);
-int	check_colors(t_data *data);
-int	ft_new_atoi(char *str);
+int		check_Deriction(t_data *data);
+int		check_colors(t_data *data);
+int		ft_new_atoi(char *str);
 
 #endif

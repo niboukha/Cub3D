@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pars.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: niboukha <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: xshel <xshel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 03:34:30 by m-boukel          #+#    #+#             */
-/*   Updated: 2023/10/03 11:19:45 by niboukha         ###   ########.fr       */
+/*   Updated: 2023/10/05 01:15:37 by xshel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,26 @@ void	get_pos(char **map, t_map	*ma)
 	ma->coor.y = i;
 }
 
+void	check_player_pos(t_data *data)
+{
+	int		i;
+	int		count;
+
+	i = 0;
+	count = 0;
+	while (data->files->map[i])
+	{
+		if (data->files->map[i] == 'N' || data->files->map[i] == 'S' || data->files->map[i] == 'E' || data->files->map[i] == 'W')
+			count++;
+		i++;
+	}
+	if (count != 1)
+	{
+		ft_putstr_fd("Error : Player needed\n", 2);
+		exit(0);
+	}
+}
+
 int	parsing(t_data data, t_map *map, int fd)
 {
 	read_file(&data, fd);
@@ -53,5 +73,6 @@ int	parsing(t_data data, t_map *map, int fd)
 	check_map(&data);
 	map->map = ft_split(data.files->map, '\n');
 	get_pos(map->map, map);
+	check_player_pos(&data);
 	return (0);
 }
