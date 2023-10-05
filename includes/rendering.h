@@ -6,7 +6,7 @@
 /*   By: niboukha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 15:19:36 by niboukha          #+#    #+#             */
-/*   Updated: 2023/10/04 13:21:23 by niboukha         ###   ########.fr       */
+/*   Updated: 2023/10/05 14:44:37 by niboukha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # define S 115
 # define W 119
 # define D 100
-# define ESC 53
+# define ESC 65307
 # define LEFT 65361
 # define RIGHT 65363
 # define DOWN 65364
@@ -106,5 +106,6 @@ void	fill_cub_p(t_map *map, int x, int y, int color);
 int		close_win(void);
 
 void	fill_minimap(t_map *map);
+int	mouse_key(int key_code, int x, int y, t_map *map);
 
 #endif

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub.c                                              :+:      :+:    :+:   */
+/*   rendering.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: niboukha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 15:19:31 by niboukha          #+#    #+#             */
-/*   Updated: 2023/10/04 13:20:46 by niboukha         ###   ########.fr       */
+/*   Updated: 2023/10/05 14:42:51 by niboukha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	rendering(t_map	*map)
 					&map->image.line_length, &map->image.endian);
 	put_pixel(map);
 	mlx_hook(map->mlx_win, 2, 1L<<0, key, map);
+	mlx_mouse_hook(map->mlx_win, mouse_key, map);
 	mlx_hook(map->mlx_win, 17, 1L<<0, close_win, map);
 	mlx_loop(map->mlx);
 }

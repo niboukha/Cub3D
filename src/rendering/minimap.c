@@ -6,7 +6,7 @@
 /*   By: niboukha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 17:36:04 by niboukha          #+#    #+#             */
-/*   Updated: 2023/10/04 14:43:37 by niboukha         ###   ########.fr       */
+/*   Updated: 2023/10/05 15:33:19 by niboukha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,12 @@ void	fill_minimap(t_map *map)
 
 	i = 0;
 	e = map->coor.py - 75;
-	if (e < 0)
-		e = 0;
-	while (i < 150 && e < map->coor.py + 75)
+	while (i < 150 && (e / 64) < map->coor.y && e < map->coor.py + 75)
 	{
 		j = 0;
 		f = map->coor.px - 100;
-		if (f < 0)
-			f = 0;
-		while (j < 200 && f < map->coor.px + 100)
+		while ((f / 64) < (int)ft_strlen(map->map[e / 64])
+			&& j < 200 && f < map->coor.px + 100)
 		{
 			if (map->map[e / 64][f / 64] == '1')
 				my_mlx_put_pixel(&map->image, j, i, 0xf0f0f0);
