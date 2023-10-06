@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xshel <xshel@student.42.fr>                +#+  +:+       +#+        */
+/*   By: niboukha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 12:58:47 by m-boukel          #+#    #+#             */
-/*   Updated: 2023/10/06 03:44:30 by xshel            ###   ########.fr       */
+/*   Updated: 2023/10/05 15:39:13 by niboukha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ typedef struct files
 {
 	char	**file;
 	char	*d;
-	char	**d_spl;
 	char	*clr;
 	char	*map;
 	char	**map_spl;
@@ -74,6 +73,5 @@ int	check_Deriction(t_data *data);
 int	check_colors(t_data *data);
 int	ft_new_atoi(char *str);
 void	check_player_pos(t_data *data);
-int    check_texture_path(t_data *data);
 
 #endif

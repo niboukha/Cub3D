@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   put_pixels.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xshel <xshel@student.42.fr>                +#+  +:+       +#+        */
+/*   By: niboukha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 15:24:04 by niboukha          #+#    #+#             */
-/*   Updated: 2023/10/05 15:43:38 by xshel            ###   ########.fr       */
+/*   Updated: 2023/10/05 18:45:49 by niboukha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	my_mlx_put_pixel(t_image *img, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-void	put_pixel(t_map *map, t_data *data)
+void	put_pixel(t_map *map)
 {
 	int	i;
 	int	j;
@@ -51,7 +51,7 @@ void	put_pixel(t_map *map, t_data *data)
 		}
 		i++;
 	}
-	get_dist_wall(map, 0x00FF00, data);
+	get_dist_wall(map, 0x00FF00);
 	player_collisions(map, map->coor.px, map->coor.py);
 	fill_minimap(map);
 	fill_cub_p(map, map->coor.m_x, map->coor.m_y, 0xff0000);

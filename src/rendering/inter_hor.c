@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inter_hor.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xshel <xshel@student.42.fr>                +#+  +:+       +#+        */
+/*   By: niboukha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 15:59:16 by niboukha          #+#    #+#             */
-/*   Updated: 2023/10/05 15:22:45 by xshel            ###   ########.fr       */
+/*   Updated: 2023/10/05 17:11:14 by niboukha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	coor_of_hor_wall(t_map *map, double x, double y)
 	}
 	map->coor.up = 0;
 	map->coor.down = 0;
-	map->wall->h_x = x;
-	map->wall->h_y = y;
+	map->wall.h_x = x;
+	map->wall.h_y = y;
 	map->coor.d_h = distance_wall(map, x, y);
 }

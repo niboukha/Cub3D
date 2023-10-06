@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cast_rays.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xshel <xshel@student.42.fr>                +#+  +:+       +#+        */
+/*   By: niboukha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 09:52:32 by niboukha          #+#    #+#             */
-/*   Updated: 2023/10/05 15:42:59 by xshel            ###   ########.fr       */
+/*   Updated: 2023/10/05 18:46:53 by niboukha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,23 +30,17 @@ void	fill_map3(t_map *map)
 	}
 }
 
-unsigned int	get_color(t_map *map, int vx, double y, t_data *data)
-{texture
-	int				j;
-	unsigned int	color;
-
-	i = vx % 64;
-	j = y;
-	color = *(unsigned int *)(data->files->d + (j * 64 + i) * 4);
-	return (color);
+unsigned int	get_color(t_map *map, int vx, int y)
+{
+	return (*(unsigned int *)(map->text.addr + y * map->text.line_length + vx * (map->text.bits_per_pixel / 8)));
 }
 
-void	draw_walls(t_map *map, int vx, double angle, t_data *data)
+void	draw_walls(t_map *map, int vx, double angle)
 {
 	int	j;
 	int	x;
+	int vy;
 
-	
 	x = fabs(2 * tan(M_PI / 6) * (map->coor.d * cos(angle - map->coor.angle)));
 	map->wall.wall_height = ceil(64 * W_WIN / x);
 	j = (H_WIN / 2) - (map->wall.wall_height / 2);
@@ -54,8 +48,9 @@ void	draw_walls(t_map *map, int vx, double angle, t_data *data)
 		j = 0;
 	while (j < H_WIN && j < ((H_WIN / 2) + (map->wall.wall_height / 2)))
 	{
+		vy = (j - (H_WIN / 2) + (map->wall.wall_height / 2)) * 64.0 / map->wall.wall_height;
 		my_mlx_put_pixel(&map->image, map->wall.x,
-			map->wall.y + j, get_color(map, vx, j * (64.0 / map->wall.wall_height), data));
+			map->wall.y + j, get_color(map, vx, vy));
 		j++;
 	}
 }

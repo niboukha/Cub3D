@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pars.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xshel <xshel@student.42.fr>                +#+  +:+       +#+        */
+/*   By: niboukha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 03:34:30 by m-boukel          #+#    #+#             */
-/*   Updated: 2023/10/06 03:46:11 by xshel            ###   ########.fr       */
+/*   Updated: 2023/10/05 15:39:28 by niboukha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,13 +58,6 @@ int	parsing(t_data data, t_map *map, int fd)
 {
 	read_file(&data, fd);
 	split_file(&data);
-
-	if (!check_texture_path(&data))
-	{
-		ft_putstr_fd("Error : Texture path not valid\n", 2);
-		// sould free data->files->d_spl
-		return (1);
-	}
 	if (check_Deriction(&data))
 	{
 		ft_putstr_fd("Error : Deriction not valid\n", 2);

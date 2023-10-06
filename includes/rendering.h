@@ -3,15 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   rendering.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xshel <xshel@student.42.fr>                +#+  +:+       +#+        */
+/*   By: niboukha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 15:19:36 by niboukha          #+#    #+#             */
-/*   Updated: 2023/10/05 15:44:46 by xshel            ###   ########.fr       */
+/*   Updated: 2023/10/05 17:34:37 by niboukha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RENDERING_H
 #define RENDERING_H
+
+#include "./parsing.h"
 
 # define A 97
 # define S 115
@@ -78,18 +80,20 @@ typedef struct t_map
 	t_wall	wall;
 	t_image	image;
 	t_image	img;
+	t_image	text;
+	t_data	*data;
 }			t_map;
 
-void	rendering(t_map	*map, t_data *data);
+void	rendering(t_map	*map);
 
-void	put_pixel(t_map *map, t_data *data);
+void	put_pixel(t_map *map);
 void	my_mlx_put_pixel(t_image *img, int x, int y, int color);
 int		key(int key_code, t_map *map);
-void	get_dist_wall(t_map *map, int color, t_data *data);
+void	get_dist_wall(t_map *map, int color);
 void	move_player(t_map *map, int x, int y);
 int		player_collisions(t_map *map, int x, int y);
 int		check_if_wall(t_map *map, int x, int y);
-void	draw_walls(t_map *map, int color, double angle, t_data *data);
+void	draw_walls(t_map *map, int color, double angle);
 void	fill_map3(t_map *map);
 
 void	inter_ver_wall(t_map *map, double angle);
