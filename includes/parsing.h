@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: niboukha <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: m-boukel <m-boukel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 12:58:47 by m-boukel          #+#    #+#             */
-/*   Updated: 2023/10/06 11:28:51 by niboukha         ###   ########.fr       */
+/*   Updated: 2023/10/06 17:01:34 by m-boukel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,14 @@ typedef struct files
 	char	**map_spl;
 }			t_files;
 
+typedef struct texture
+{
+	char *_no;
+	char *_so;
+	char *_we;
+	char *_ea;
+}			t_texture;
+
 typedef struct data
 {
 	int			wall;
@@ -62,6 +70,7 @@ typedef struct data
 	t_deriction	*deriction;
 	t_files		*files;
 	t_ppos		*pos;
+	t_texture	*texture;
 }					t_data;
 
 void	check_map(t_data *data);
