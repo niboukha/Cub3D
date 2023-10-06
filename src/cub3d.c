@@ -6,7 +6,7 @@
 /*   By: niboukha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 13:04:16 by m-boukel          #+#    #+#             */
-/*   Updated: 2023/10/06 15:06:02 by niboukha         ###   ########.fr       */
+/*   Updated: 2023/10/06 11:51:55 by niboukha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 int	main(int ac, char **av)
 {
 	int		fd;
-	t_data	data;
 	t_map	*map;
+	t_data	data;
 
 	map = malloc (sizeof(t_map));
 	data.files = malloc(sizeof(t_files));
@@ -25,7 +25,7 @@ int	main(int ac, char **av)
 	fd = open(av[1], O_RDONLY);
 	if (fd == -1)
 		return (perror("Error"), 0);
-	if (parsing(data, map, fd) == 1)
+	if (parsing(&data, map, fd) == 1)
 		return (0);
 	map->data = &data;
 	rendering(map);

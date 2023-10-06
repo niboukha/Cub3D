@@ -6,7 +6,7 @@
 /*   By: niboukha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 15:19:31 by niboukha          #+#    #+#             */
-/*   Updated: 2023/10/05 18:44:12 by niboukha         ###   ########.fr       */
+/*   Updated: 2023/10/06 15:15:26 by niboukha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 
 void	rendering(t_map	*map)
 {
-	int wi, he ;
+	int	w_img;
+	int	h_img;
+
 	init_map(map);
 	map->mlx = mlx_init();
 	map->mlx_win = mlx_new_window(map->mlx, W_WIN, H_WIN,
@@ -22,10 +24,10 @@ void	rendering(t_map	*map)
 	map->image.img = mlx_new_image(map->mlx, W_WIN, H_WIN);
 	map->image.addr = mlx_get_data_addr(map->image.img, &map->image.bits_per_pixel,
 					&map->image.line_length, &map->image.endian);
-	map->text.img = mlx_xpm_file_to_image(map->mlx
-		, "/nfs/homes/niboukha/Desktop/cub_text/includes/texture/txt.xpm", &wi, &he);
-	map->text.addr = mlx_get_data_addr(map->text.img, &map->text.bits_per_pixel,
-			&map->text.line_length, &map->text.endian);
+	map->textures.img = mlx_xpm_file_to_image(map->mlx,
+		"/nfs/homes/niboukha/Desktop/cub/textures/skull.xpm", &w_img, &h_img);
+	map->textures.addr = mlx_get_data_addr(map->textures.img, &map->textures.bits_per_pixel,
+					&map->textures.line_length, &map->textures.endian);
 	put_pixel(map);
 	mlx_hook(map->mlx_win, 2, 1L<<0, key, map);
 	mlx_mouse_hook(map->mlx_win, mouse_key, map);

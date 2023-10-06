@@ -6,14 +6,12 @@
 /*   By: niboukha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 15:19:36 by niboukha          #+#    #+#             */
-/*   Updated: 2023/10/05 17:34:37 by niboukha         ###   ########.fr       */
+/*   Updated: 2023/10/06 13:39:57 by niboukha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RENDERING_H
 #define RENDERING_H
-
-#include "./parsing.h"
 
 # define A 97
 # define S 115
@@ -26,6 +24,13 @@
 # define UP 65362
 # define H_WIN 641.0
 # define W_WIN 1007.0
+
+typedef struct t_textures
+{
+	int	x;
+	int	y;
+}		t_textures;
+
 
 typedef struct t_coor
 {
@@ -72,16 +77,17 @@ typedef struct t_wall
 
 typedef struct t_map
 {
-	void	*mlx;
-	void	*mlx_win;
-	void	*mlx_win1;
-	char	**map;
-	t_coor	coor;
-	t_wall	wall;
-	t_image	image;
-	t_image	img;
-	t_image	text;
-	t_data	*data;
+	void		*mlx;
+	void		*mlx_win;
+	void		*mlx_win1;
+	char		**map;
+	t_coor		coor;
+	t_wall		wall;
+	t_image		image;
+	t_image		img;
+	t_image		textures;
+	t_data		*data;
+	t_textures	txt;
 }			t_map;
 
 void	rendering(t_map	*map);
@@ -89,11 +95,11 @@ void	rendering(t_map	*map);
 void	put_pixel(t_map *map);
 void	my_mlx_put_pixel(t_image *img, int x, int y, int color);
 int		key(int key_code, t_map *map);
-void	get_dist_wall(t_map *map, int color);
+void	get_dist_wall(t_map *map);
 void	move_player(t_map *map, int x, int y);
 int		player_collisions(t_map *map, int x, int y);
 int		check_if_wall(t_map *map, int x, int y);
-void	draw_walls(t_map *map, int color, double angle);
+void	draw_walls(t_map *map, double angle);
 void	fill_map3(t_map *map);
 
 void	inter_ver_wall(t_map *map, double angle);
@@ -110,6 +116,8 @@ void	fill_cub_p(t_map *map, int x, int y, int color);
 int		close_win(void);
 
 void	fill_minimap(t_map *map);
-int	mouse_key(int key_code, int x, int y, t_map *map);
+int		mouse_key(int key_code, int x, int y, t_map *map);
+
+unsigned int	convert_color(int r, int g, int b);
 
 #endif

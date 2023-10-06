@@ -6,7 +6,7 @@
 /*   By: niboukha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 12:58:47 by m-boukel          #+#    #+#             */
-/*   Updated: 2023/10/05 16:51:01 by niboukha         ###   ########.fr       */
+/*   Updated: 2023/10/06 11:51:04 by niboukha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 # define CUB3D_H
 
 #include <stdio.h>
+#include <mlx.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include <mlx.h>
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <string.h>
@@ -25,9 +25,8 @@
 # include "./get_next_line.h"
 #include "./parsing.h"
 #include "./rendering.h"
-// #include "./mlxx.h"
 
-int		parsing(t_data data, t_map *map, int fd);
+int		parsing(t_data *data, t_map *map, int fd);
 void	init_mlx(t_map	*map);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: niboukha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 15:26:19 by niboukha          #+#    #+#             */
-/*   Updated: 2023/10/05 10:58:58 by niboukha         ###   ########.fr       */
+/*   Updated: 2023/10/06 11:59:56 by niboukha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,9 @@ int	close_win(void)
 double	distance_wall(t_map *map, double x, double y)
 {
 	return (sqrt(pow(map->coor.px - x, 2) + pow(map->coor.py - y, 2)));
+}
+
+unsigned int	convert_color(int r, int g, int b)
+{
+	return ((r & 0xff) << 16) + ((g & 0xff) << 8) + (b & 0xff);
 }

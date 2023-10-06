@@ -6,7 +6,7 @@
 /*   By: niboukha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 15:24:04 by niboukha          #+#    #+#             */
-/*   Updated: 2023/10/05 18:45:49 by niboukha         ###   ########.fr       */
+/*   Updated: 2023/10/06 15:17:17 by niboukha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	put_pixel(t_map *map)
 		}
 		i++;
 	}
-	get_dist_wall(map, 0x00FF00);
+	get_dist_wall(map);
 	player_collisions(map, map->coor.px, map->coor.py);
 	fill_minimap(map);
 	fill_cub_p(map, map->coor.m_x, map->coor.m_y, 0xff0000);
