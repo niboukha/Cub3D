@@ -6,7 +6,7 @@
 /*   By: niboukha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 15:01:54 by niboukha          #+#    #+#             */
-/*   Updated: 2023/10/06 15:19:57 by niboukha         ###   ########.fr       */
+/*   Updated: 2023/10/06 19:44:05 by niboukha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,15 @@ int	check_if_wall(t_map *map, int x, int y)
 {
 	int	i;
 	int	j;
+
+
+	i = x / 64;
+	j = y / 64;
+
+	if (i >= 0 && j >= 0 && j < map->coor.y
+		&& i < (int)ft_strlen(map->map[j])
+		&& map->map[j][i] == '1')
+		return (1);
 
 	if (map->coor.left == 1)
 		i = (x - 1) / 64;
@@ -73,11 +82,31 @@ void	get_dist_wall(t_map *map)
 		{
 			map->coor.d = map->coor.d_h;
 			map->txt.x = ((int)map->wall.h_x) % 64;
+			if (angle > 0 && angle < M_PI)
+			{
+				map->textures.addr = mlx_get_data_addr(map->textures.img_s, &map->textures.bits_per_pixel,
+					&map->textures.line_length, &map->textures.endian);
+			}
+			else
+			{
+				map->textures.addr = mlx_get_data_addr(map->textures.img_n, &map->textures.bits_per_pixel,
+					&map->textures.line_length, &map->textures.endian);
+			}
 		}
 		else
 		{
 			map->coor.d = map->coor.d_v;
 			map->txt.x = ((int)map->wall.v_y) % 64;
+			if ((angle > 0 && angle < (M_PI / 2)) || (angle > (3 * M_PI / 2) && angle < (2 * M_PI)))
+			{
+				map->textures.addr = mlx_get_data_addr(map->textures.img_e, &map->textures.bits_per_pixel,
+					&map->textures.line_length, &map->textures.endian);
+			}
+			else
+			{
+				map->textures.addr = mlx_get_data_addr(map->textures.img_w, &map->textures.bits_per_pixel,
+					&map->textures.line_length, &map->textures.endian);
+			}
 		}
 		draw_walls(map, angle);
 		map->wall.x++;

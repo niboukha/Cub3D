@@ -6,7 +6,7 @@
 /*   By: niboukha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 09:52:32 by niboukha          #+#    #+#             */
-/*   Updated: 2023/10/06 15:39:37 by niboukha         ###   ########.fr       */
+/*   Updated: 2023/10/06 18:58:36 by niboukha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,16 +52,17 @@ void	draw_walls(t_map *map, double angle)
 	j = 0;
 	while (j < H_WIN)
 	{
-		if (j <= start)
+		if (j <= (H_WIN / 2) - (map->wall.wall_height / 2))
 		{
 			color = convert_color(map->data->c_c->c->r, map->data->c_c->c->g,
 				map->data->c_c->c->b);
 			my_mlx_put_pixel(&map->image, map->wall.x, map->wall.y + j,color);
 		}
-		if (j > start && j < end)
+		if (start < end)
 		{
-			map->txt.y = (j - start) * 64.0 / map->wall.wall_height;
-			my_mlx_put_pixel(&map->image, map->wall.x, map->wall.y + j, get_color(map, map->txt.x, map->txt.y));
+			map->txt.y = (start - (H_WIN / 2) + (map->wall.wall_height / 2)) * 64.0 / map->wall.wall_height;
+			my_mlx_put_pixel(&map->image, map->wall.x, map->wall.y + start, get_color(map, map->txt.x, map->txt.y));
+			start++;
 		}
 		if (j >= end)
 		{

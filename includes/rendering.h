@@ -6,7 +6,7 @@
 /*   By: niboukha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 15:19:36 by niboukha          #+#    #+#             */
-/*   Updated: 2023/10/06 13:39:57 by niboukha         ###   ########.fr       */
+/*   Updated: 2023/10/06 18:01:53 by niboukha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,9 @@
 
 typedef struct t_textures
 {
-	int	x;
-	int	y;
+	double	x;
+	double	y;
+	int		direction;
 }		t_textures;
 
 
@@ -54,6 +55,10 @@ typedef struct t_coor
 typedef struct t_image
 {
 	void	*img;
+	void	*img_n;
+	void	*img_e;
+	void	*img_s;
+	void	*img_w;
 	char	*addr;
 	int		bits_per_pixel;
 	int		line_length;
