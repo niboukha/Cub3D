@@ -6,46 +6,51 @@
 /*   By: niboukha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 17:36:04 by niboukha          #+#    #+#             */
-/*   Updated: 2023/10/05 15:33:19 by niboukha         ###   ########.fr       */
+/*   Updated: 2023/10/07 12:28:53 by niboukha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
+void	put_pixel_minimap(t_map *map, int i, int j)
+{
+	if (map->map[map->mini.e / 64][map->mini.f / 64] == '1')
+		my_mlx_put_pixel(&map->image, j, i, 0xf0f0f0);
+	else if (map->map[map->mini.e / 64][map->mini.f / 64] == '0')
+		my_mlx_put_pixel(&map->image, j, i, 0x0000ff);
+	else
+		my_mlx_put_pixel(&map->image, j, i, 0x0000);
+	if (map->map[map->mini.e / 64][map->mini.f / 64] == 'N'
+		|| map->map[map->mini.e / 64][map->mini.f / 64] == 'E'
+		|| map->map[map->mini.e / 64][map->mini.f / 64] == 'W'
+		|| map->map[map->mini.e / 64][map->mini.f / 64] == 'S')
+	{
+		my_mlx_put_pixel(&map->image, j, i, 0x0000ff);
+		map->coor.m_x = 100;
+		map->coor.m_y = 75;
+	}
+}
 
 void	fill_minimap(t_map *map)
 {
 	int	i;
 	int	j;
-	int	e;
-	int	f;
 
 	i = 0;
-	e = map->coor.py - 75;
-	while (i < 150 && (e / 64) < map->coor.y && e < map->coor.py + 75)
+	map->mini.e = map->coor.py - 75;
+	while (i < 150 && (map->mini.e / 64) < map->coor.y
+		&& map->mini.e < map->coor.py + 75)
 	{
 		j = 0;
-		f = map->coor.px - 100;
-		while ((f / 64) < (int)ft_strlen(map->map[e / 64])
-			&& j < 200 && f < map->coor.px + 100)
+		map->mini.f = map->coor.px - 100;
+		while ((map->mini.f / 64) < (int)ft_strlen(map->map[map->mini.e / 64])
+			&& j < 200 && map->mini.f < map->coor.px + 100)
 		{
-			if (map->map[e / 64][f / 64] == '1')
-				my_mlx_put_pixel(&map->image, j, i, 0xf0f0f0);
-			else if (map->map[e / 64][f / 64] == '0')
-				my_mlx_put_pixel(&map->image, j, i, 0x0000ff);
-			else
-				my_mlx_put_pixel(&map->image, j, i, 0x0000);
-			if (map->map[e / 64][f / 64] == 'N' || map->map[e / 64][f / 64] == 'E'
-				|| map->map[e / 64][f / 64] == 'W' || map->map[e / 64][f / 64] == 'S')
-			{
-				my_mlx_put_pixel(&map->image, j, i, 0x0000ff);
-				map->coor.m_x = 100;
-				map->coor.m_y = 75;
-			}
-			f++;
+			put_pixel_minimap(map, i, j);
+			map->mini.f++;
 			j++;
 		}
-		e++;
+		map->mini.e++;
 		i++;
 	}
 }
@@ -67,4 +72,3 @@ void	fill_cub_p(t_map *map, int x, int y, int color)
 		i++;
 	}
 }
-

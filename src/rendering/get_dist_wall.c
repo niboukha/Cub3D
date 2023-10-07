@@ -6,63 +6,47 @@
 /*   By: niboukha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 15:01:54 by niboukha          #+#    #+#             */
-/*   Updated: 2023/10/06 19:44:05 by niboukha         ###   ########.fr       */
+/*   Updated: 2023/10/07 12:15:40 by niboukha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-int	check_if_wall(t_map *map, int x, int y)
+void	get_addr_hor(t_map *map, double angle)
 {
-	int	i;
-	int	j;
-
-
-	i = x / 64;
-	j = y / 64;
-
-	if (i >= 0 && j >= 0 && j < map->coor.y
-		&& i < (int)ft_strlen(map->map[j])
-		&& map->map[j][i] == '1')
-		return (1);
-
-	if (map->coor.left == 1)
-		i = (x - 1) / 64;
-	else if (map->coor.right == 1)
-		i = (x + 1) / 64;
-	j = y / 64;
-	if (i >= 0 && j >= 0 && j < map->coor.y
-		&& i < (int)ft_strlen(map->map[j])
-		&& map->map[j][i] == '1')
-		return (1);
-
-	if (map->coor.up == 1)
-		j = (y - 1) / 64;
-	else if (map->coor.down == 1)
-		j = (y + 1) / 64;
-	i = x / 64;
-	if (i >= 0 && j >= 0 && j < map->coor.y
-		&& i < (int)ft_strlen(map->map[j])
-		&& map->map[j][i] == '1')
-			return (1);
-
-	if (map->coor.up == 1)
-		j = (y - 1) / 64;
-	else if (map->coor.down == 1)
-		j = (y + 1) / 64;
+	map->coor.d = map->coor.d_h;
+	map->txt.x = ((int)map->wall.h_x) % 64;
+	if (angle > 0 && angle < M_PI)
+	{
+		map->textures.addr = mlx_get_data_addr(map->textures.img_s,
+				&map->textures.bits_per_pixel,
+				&map->textures.line_length, &map->textures.endian);
+	}
 	else
-		j = y / 64;
-	if (map->coor.left == 1)
-		i = (x - 1) / 64;
-	else if (map->coor.right == 1)
-		i = (x + 1) / 64;
+	{
+		map->textures.addr = mlx_get_data_addr(map->textures.img_n,
+				&map->textures.bits_per_pixel,
+				&map->textures.line_length, &map->textures.endian);
+	}
+}
+
+void	get_addr_ver(t_map *map, double angle)
+{
+	map->coor.d = map->coor.d_v;
+	map->txt.x = ((int)map->wall.v_y) % 64;
+	if ((angle > 0 && angle < (M_PI / 2)) || (angle > (3 * M_PI / 2)
+			&& angle < (2 * M_PI)))
+	{
+		map->textures.addr = mlx_get_data_addr(map->textures.img_e,
+				&map->textures.bits_per_pixel,
+				&map->textures.line_length, &map->textures.endian);
+	}
 	else
-		i = x / 64;
-	if (i >= 0 && j >= 0 && j < map->coor.y
-		&& i < (int)ft_strlen(map->map[j])
-		&& map->map[j][i] == '1')
-		return (1);
-	return (0);
+	{
+		map->textures.addr = mlx_get_data_addr(map->textures.img_w,
+				&map->textures.bits_per_pixel,
+				&map->textures.line_length, &map->textures.endian);
+	}
 }
 
 void	get_dist_wall(t_map *map)
@@ -79,35 +63,9 @@ void	get_dist_wall(t_map *map)
 		inter_hori_wall(map, angle);
 		inter_ver_wall(map, angle);
 		if (map->coor.d_h < map->coor.d_v)
-		{
-			map->coor.d = map->coor.d_h;
-			map->txt.x = ((int)map->wall.h_x) % 64;
-			if (angle > 0 && angle < M_PI)
-			{
-				map->textures.addr = mlx_get_data_addr(map->textures.img_s, &map->textures.bits_per_pixel,
-					&map->textures.line_length, &map->textures.endian);
-			}
-			else
-			{
-				map->textures.addr = mlx_get_data_addr(map->textures.img_n, &map->textures.bits_per_pixel,
-					&map->textures.line_length, &map->textures.endian);
-			}
-		}
+			get_addr_hor(map, angle);
 		else
-		{
-			map->coor.d = map->coor.d_v;
-			map->txt.x = ((int)map->wall.v_y) % 64;
-			if ((angle > 0 && angle < (M_PI / 2)) || (angle > (3 * M_PI / 2) && angle < (2 * M_PI)))
-			{
-				map->textures.addr = mlx_get_data_addr(map->textures.img_e, &map->textures.bits_per_pixel,
-					&map->textures.line_length, &map->textures.endian);
-			}
-			else
-			{
-				map->textures.addr = mlx_get_data_addr(map->textures.img_w, &map->textures.bits_per_pixel,
-					&map->textures.line_length, &map->textures.endian);
-			}
-		}
+			get_addr_ver(map, angle);
 		draw_walls(map, angle);
 		map->wall.x++;
 		angle += ((60.0 * M_PI) / (W_WIN * 180));

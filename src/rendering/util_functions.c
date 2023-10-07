@@ -6,7 +6,7 @@
 /*   By: niboukha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 15:26:19 by niboukha          #+#    #+#             */
-/*   Updated: 2023/10/06 18:02:40 by niboukha         ###   ########.fr       */
+/*   Updated: 2023/10/07 11:18:56 by niboukha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,5 @@ double	distance_wall(t_map *map, double x, double y)
 
 unsigned int	convert_color(int r, int g, int b)
 {
-	return ((r & 0xff) << 16) + ((g & 0xff) << 8) + (b & 0xff);
+	return (((r & 0xff) << 16) + ((g & 0xff) << 8) + (b & 0xff));
 }
