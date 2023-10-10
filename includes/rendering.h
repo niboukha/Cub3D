@@ -6,7 +6,7 @@
 /*   By: niboukha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 15:19:36 by niboukha          #+#    #+#             */
-/*   Updated: 2023/10/08 17:57:06 by niboukha         ###   ########.fr       */
+/*   Updated: 2023/10/07 12:33:28 by niboukha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@
 # define UP 65362
 # define H_WIN 641.0
 # define W_WIN 1007.0
-#define	SPEED 7
 
 typedef struct t_mini
 {
@@ -56,20 +55,15 @@ typedef struct t_coor
 	int		down;
 	int		right;
 	int		left;
-	int		flag_a;
-	int		coll;
 }			t_coor;
 
 typedef struct t_image
 {
-	int		w_img;
-	int		h_img;
 	void	*img;
 	void	*img_n;
 	void	*img_e;
 	void	*img_s;
 	void	*img_w;
-	void	*img_d[10];
 	char	*addr;
 	int		bits_per_pixel;
 	int		line_length;
@@ -91,19 +85,6 @@ typedef struct t_wall
 	double	wall_height;
 }			t_wall;
 
-typedef struct t_sprt
-{
-	int	x;
-	int	y;
-	int	i_x;
-	int	i_y;
-	int	j_x;
-	int	j_y;
-	int	t_y;
-	int	t_x;
-	int	timer;
-}		t_sprt;
-
 typedef struct t_map
 {
 	void		*mlx;
@@ -115,11 +96,9 @@ typedef struct t_map
 	t_image		image;
 	t_image		img;
 	t_image		textures;
-	t_image		sprit;
 	t_data		*data;
 	t_textures	txt;
 	t_mini		mini;
-	t_sprt		sprt;
 }				t_map;
 
 void			rendering(t_map *map);
@@ -144,9 +123,5 @@ void			fill_minimap(t_map *map);
 int				mouse_key(int key_code, int x, int y, t_map *map);
 unsigned int	convert_color(int r, int g, int b);
 void			get_coor_player(t_map *map);
-int	animation(t_map *map);
-
-
-void	draw_rays(t_map *map, double angle);
 
 #endif

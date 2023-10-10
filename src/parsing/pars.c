@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   pars.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: niboukha <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: xshel <xshel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 03:34:30 by m-boukel          #+#    #+#             */
-/*   Updated: 2023/10/06 12:55:13 by niboukha         ###   ########.fr       */
+/*   Updated: 2023/10/10 19:54:00 by xshel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-void	get_pos(char **map, t_map	*ma)
+void	get_pos(char **map, t_map *ma)
 {
-	int		i;
-	int		j;
+	int	i;
+	int	j;
 
 	i = 0;
 	ma->coor.y = 0;
@@ -36,14 +36,15 @@ void	get_pos(char **map, t_map	*ma)
 
 void	check_player_pos(t_data *data)
 {
-	int		i;
-	int		count;
+	int	i;
+	int	count;
 
 	i = 0;
 	count = 0;
 	while (data->files->map[i])
 	{
-		if (data->files->map[i] == 'N' || data->files->map[i] == 'S' || data->files->map[i] == 'E' || data->files->map[i] == 'W')
+		if (data->files->map[i] == 'N' || data->files->map[i] == 'S'
+			|| data->files->map[i] == 'E' || data->files->map[i] == 'W')
 			count++;
 		i++;
 	}
@@ -58,24 +59,24 @@ int	parsing(t_data *data, t_map *map, int fd)
 {
 	read_file(data, fd);
 	split_file(data);
-
+	free_string(data->files->file);
 	if (!check_texture_path(data))
 	{
 		ft_putstr_fd("Error : Texture path not valid\n", 2);
-		// sould free data->files->d_spl
-		return (1);
+		// free_files(data);
+		exit(EXIT_FAILURE);
 	}
 	if (check_Deriction(data))
 	{
 		ft_putstr_fd("Error : Deriction not valid\n", 2);
-		// sould free data->deriction
-		return (1);
+		// free_files(data);
+		exit(EXIT_FAILURE);
 	}
 	if (check_colors(data))
 	{
 		ft_putstr_fd("Error : Colors not valid\n", 2);
-		// sould free data->clr
-		return (1);
+		// free_files(data);
+		exit(EXIT_FAILURE);
 	}
 	check_map(data);
 	map->map = ft_split(data->files->map, '\n');

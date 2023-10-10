@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: niboukha <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: xshel <xshel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 12:58:47 by m-boukel          #+#    #+#             */
-/*   Updated: 2023/10/06 11:51:04 by niboukha         ###   ########.fr       */
+/*   Updated: 2023/10/07 15:02:33 by xshel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define CUB3D_H
 
 #include <stdio.h>
-#include <mlx.h>
+#include "./mlxx.h"
 #include <stdlib.h>
 #include <unistd.h>
 #include <sys/stat.h>

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_new_atoi.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: m-boukel <m-boukel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: xshel <xshel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 05:10:54 by m-boukel          #+#    #+#             */
-/*   Updated: 2023/09/15 05:21:09 by m-boukel         ###   ########.fr       */
+/*   Updated: 2023/10/10 19:44:58 by xshel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	check_cara(char *s, int j)
 {
 	while (s[j])
 	{
-		if (!(s[j] >= '0' && s[j] <= '9') && s[j] != ',')
+		if (!(s[j] >= '0' && s[j] <= '9') && s[j] != ',' && s[j] != ' ' && s[j] != '\t')
 		{
 			ft_putstr_fd("Error : exist of another char\n", 2);
 			exit(1);

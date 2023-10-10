@@ -6,7 +6,7 @@
 /*   By: niboukha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 15:26:19 by niboukha          #+#    #+#             */
-/*   Updated: 2023/10/08 18:16:33 by niboukha         ###   ########.fr       */
+/*   Updated: 2023/10/07 11:18:56 by niboukha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,6 @@ void	init_map(t_map *map)
 	map->wall.y = 0;
 	map->coor.put = 0;
 	map->txt.direction = 0;
-	map->sprt.x = 0;
-	map->sprt.y = 0;
-	map->sprt.timer = 0;
 }
 
 int	close_win(void)

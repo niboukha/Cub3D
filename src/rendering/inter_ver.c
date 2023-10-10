@@ -6,7 +6,7 @@
 /*   By: niboukha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 18:20:17 by niboukha          #+#    #+#             */
-/*   Updated: 2023/10/08 18:36:51 by niboukha         ###   ########.fr       */
+/*   Updated: 2023/10/06 20:47:42 by niboukha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,6 @@ void	coor_of_ver_wall(t_map *map, double x, double y)
 		x += map->wall.gv_x;
 		y += map->wall.gv_y;
 	}
-	if (check_if_wall(map, x, y) == 2)
-		map->coor.flag_a = 1;
 	map->wall.v_x = x;
 	map->wall.v_y = y;
 	map->coor.right = 0;

@@ -5,13 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: m-boukel <m-boukel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/03 13:15:34 by m-boukel          #+#    #+#             */
-/*   Updated: 2023/09/03 13:16:00 by m-boukel         ###   ########.fr       */
+/*   Created: 2022/11/08 17:19:01 by m-boukel          #+#    #+#             */
+/*   Updated: 2023/10/08 16:28:40 by m-boukel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
-
+#include "../../includes/get_next_line.h"
 
 char	*first_line(char *str)
 {
@@ -52,7 +51,7 @@ char	*next_line(char *str)
 		free(str);
 		return (NULL);
 	}
-	str = ft_substr(str, i + 1, ft_strlen(str) - i - 1);
+	str = ft_substr_get_next_line(str, i + 1, strlen_get_next_line(str) - i - 1);
 	return (str);
 }
 
@@ -64,20 +63,20 @@ char	*rest(int fd, char *str)
 	buff = malloc(BUFFER_SIZE + 1);
 	if (!buff)
 		return (NULL);
-	if (str && ft_strchr(str, '\n'))
+	if (str && ft_strchr_get_next_line(str, '\n'))
 	{
 		free(buff);
 		return (str);
 	}
 	*buff = '\0';
 	rb = 1;
-	while (rb && (!str || !ft_strchr(str, '\n')))
+	while (rb && (!str || !ft_strchr_get_next_line(str, '\n')))
 	{
 		rb = read(fd, buff, BUFFER_SIZE);
 		if (rb < 0)
 			return (free(buff), NULL);
 		buff[rb] = '\0';
-		str = ft_strjoin(str, buff);
+		str = ft_strjoin_get_next_line(str, buff);
 		if (!str)
 			return (NULL);
 	}

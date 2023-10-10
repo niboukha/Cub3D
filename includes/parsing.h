@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: niboukha <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: xshel <xshel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 12:58:47 by m-boukel          #+#    #+#             */
-/*   Updated: 2023/10/06 17:17:11 by niboukha         ###   ########.fr       */
+/*   Updated: 2023/10/09 10:10:01 by xshel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,5 +85,9 @@ int		check_colors(t_data *data);
 int		ft_new_atoi(char *str);
 void	check_player_pos(t_data *data);
 int		check_texture_path(t_data *data);
+void	free_files(t_data *data);
+int		free_string(char **str);
+void	free_colors(t_c_c *colors);
+void	free_data(t_data *data);
 
 #endif
