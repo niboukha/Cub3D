@@ -27,7 +27,7 @@ void	read_file(t_data *data, int fd)
 		if (ft_strlen(buffer) == 1)
 		{
 			free(buffer);
-			buffer = ft_strdup("");
+			buffer = ft_strdup("*\n");
 		}
 		str_file = ft_strjoin(str_file, buffer);
 		free(buffer);
