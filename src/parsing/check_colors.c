@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_colors.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: niboukha <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: niboukha <niboukha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 11:43:10 by m-boukel          #+#    #+#             */
-/*   Updated: 2023/10/06 11:36:23 by niboukha         ###   ########.fr       */
+/*   Updated: 2023/10/10 20:10:47 by niboukha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,15 +106,18 @@ void    fill_colors(t_data *data, char **lines)
 int     check_colors(t_data *data)
 {
     char    **lines;
-    char    **str;
+    // char    **str;
     int     i;
 
-    i = 0;
-    str = ft_split(data->files->clr, ' ');
-    while (str[i])
-        i++;
-    if (i != 3)
-        return (1);
+    // i = 0;
+    // str = ft_split(data->files->clr, ' ');
+    // // while (str[i])
+    //     i++;
+    // if (i != 3)
+    // {
+        
+    //     return (1);
+    // }
     lines = ft_split(data->files->clr, '\n');
     i = 0;
     while (lines[i])

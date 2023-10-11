@@ -6,7 +6,7 @@ LIBFT = ./lib/libft/libft.a
 
 #HEADERS = cub3d.h
 # Source files
-MLX = -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
+MLX = -lmlx -framework OpenGL -framework AppKit
 
 LIB = $(LIBFT)  # $(wildcard ./lib/**/*.c)
 SRC = $(wildcard ./src/*.c ./src/**/*.c)

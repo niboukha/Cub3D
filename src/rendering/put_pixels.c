@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   put_pixels.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: niboukha <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: niboukha <niboukha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 15:24:04 by niboukha          #+#    #+#             */
-/*   Updated: 2023/10/08 18:17:23 by niboukha         ###   ########.fr       */
+/*   Updated: 2023/10/10 18:45:41 by niboukha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,13 @@
 void	my_mlx_put_pixel(t_image *img, int x, int y, int color)
 {
 	char	*dst;
-
-	dst = img->addr + ((y * img->line_length)
-			+ (x * (img->bits_per_pixel / 8)));
-	*(unsigned int *)dst = color;
+	
+	if (x >= 0 && x < W_WIN && y >= 0 && y < H_WIN)
+	{
+		dst = img->addr + ((y * img->line_length)
+				+ (x * (img->bits_per_pixel / 8)));
+		*(unsigned int *)dst = color;
+	}
 }
 
 void	put_pixel(t_map *map)

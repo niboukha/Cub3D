@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mouve_player.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: niboukha <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: niboukha <niboukha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 16:51:37 by niboukha          #+#    #+#             */
-/*   Updated: 2023/10/08 18:12:04 by niboukha         ###   ########.fr       */
+/*   Updated: 2023/10/10 18:49:46 by niboukha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,8 +121,11 @@ int	key(int key_code, t_map *map)
 {
 	mouvement_player_key(map, key_code);
 	rotation_player_key(map, key_code);
+	animation_gun(map, key_code);
 	fill_map3(map);
 	put_pixel(map);
+	mlx_put_image_to_window(map->mlx, map->mlx_win, map->sprit.img_d[0].img,
+		W_WIN / 2, H_WIN - map->sprit.img_d[0].h);
 	return (0);
 }
 
@@ -136,7 +139,7 @@ int	mouse_key(int key_code, int x, int y, t_map *map)
 		mouve_player(map,
 			map->coor.px + roundf(cos(map->coor.angle) * SPEED),
 			map->coor.py + roundf(sin(map->coor.angle) * SPEED));
-	if (key_code == 3)
+	if (key_code == 2)
 	{
 		map->coor.angle += 0.05;
 		if (map->coor.angle >= 2 * M_PI)
@@ -152,5 +155,7 @@ int	mouse_key(int key_code, int x, int y, t_map *map)
 	(void)y;
 	fill_map3(map);
 	put_pixel(map);
+	mlx_put_image_to_window(map->mlx, map->mlx_win, map->sprit.img_d[0].img,
+		W_WIN / 2, H_WIN - map->sprit.img_d[0].h);
 	return (0);
 }

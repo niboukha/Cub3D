@@ -1,7 +1,7 @@
 /* XPM */
 static char *result[] = {
 /* columns rows colors chars-per-pixel */
-"195 168 154 2 ",
+"64 64 154 2 ",
 "   c #0D0302",
 ".  c #090304",
 "X  c #0B0305",

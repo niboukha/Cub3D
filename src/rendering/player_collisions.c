@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_collisions.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: niboukha <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: niboukha <niboukha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 10:38:52 by niboukha          #+#    #+#             */
-/*   Updated: 2023/10/07 21:08:34 by niboukha         ###   ########.fr       */
+/*   Updated: 2023/10/10 19:01:08 by niboukha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ void	get_coor_player(t_map *map)
 		{
 			if (map->map[i][j] == 'R')
 			{
-				map->sprt.x = i;
-				map->sprt.y = j;
+				map->dr.x = i;
+				map->dr.y = j;
 			}
 			if ((map->map[i][j] == 'N' || map->map[i][j] == 'E'
 				|| map->map[i][j] == 'W' || map->map[i][j] == 'S')
@@ -62,10 +62,10 @@ int	player_collisions(t_map *map, int x, int y)
 	angle = 0;
 	while (angle <= 2 * M_PI)
 	{
-		if (check_if_wall(map, x + roundf(cos(angle) * 5),
-				y + roundf(sin(angle) * 5)) == 1
-				|| check_if_wall(map, x + roundf(cos(angle) * 5),
-					y + roundf(sin(angle) * 5)) == 2)
+		if (check_if_wall(map, x + roundf(cos(angle) * 15),
+				y + roundf(sin(angle) * 15)) == 1
+				|| check_if_wall(map, x + roundf(cos(angle) * 15),
+					y + roundf(sin(angle) * 15)) == 2)
 		{
 			return (1);
 		}

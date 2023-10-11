@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   split_file.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: m-boukel <m-boukel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: niboukha <niboukha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 12:05:13 by m-boukel          #+#    #+#             */
-/*   Updated: 2023/09/26 03:44:24 by m-boukel         ###   ########.fr       */
+/*   Updated: 2023/10/10 20:28:51 by niboukha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void split_file(t_data *data)
 				{
 					if (valid_line(data->files->file[i]))
 					{
+						
 						data->files->map = ft_strjoin(data->files->map, data->files->file[i]);
 						data->files->map = ft_strjoin(data->files->map, "\n");
 					}
