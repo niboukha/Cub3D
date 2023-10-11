@@ -6,11 +6,20 @@
 /*   By: xshel <xshel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 12:05:13 by m-boukel          #+#    #+#             */
-/*   Updated: 2023/10/10 19:57:59 by xshel            ###   ########.fr       */
+/*   Updated: 2023/10/11 14:54:31 by xshel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
+
+int	is_color(char *s)
+{
+	while (*s == ' ' || *s == '\t')
+		s++;
+	if (*s == 'F' || *s == 'C')
+			return (1);
+	return (0);
+}
 
 static int	valid_line(char *s)
 {
@@ -48,22 +57,31 @@ void	split_file(t_data *data)
 				|| ft_strncmp(data->files->file[i], "WE ", 3) == 0
 				|| ft_strncmp(data->files->file[i], "SO ", 3) == 0)
 			{
+				data->files->file[i] = ft_strtrim(data->files->file[i], " \t");
 				data->files->d = ft_strjoin(data->files->d,
 											data->files->file[i]);
 				data->files->d = ft_strjoin(data->files->d, "\n");
 			}
-			else if (ft_strncmp(data->files->file[i], "F ", 2) == 0
-					|| ft_strncmp(data->files->file[i], "C ", 2) == 0)
+			else if (is_color(data->files->file[i]))
 			{
-				data->files->clr = ft_strjoin(data->files->clr,
-												data->files->file[i]);
-				data->files->clr = ft_strjoin(data->files->clr, "\n");
+				data->files->file[i] = ft_strtrim(data->files->file[i], " \t");
+				if (ft_strncmp(data->files->file[i], "F ", 2) == 0
+						|| ft_strncmp(data->files->file[i], "C ", 2) == 0)
+				{
+					data->files->clr = ft_strjoin(data->files->clr,
+													data->files->file[i]);
+					data->files->clr = ft_strjoin(data->files->clr, "\n");
+				}
 			}
-			else if (is_map(data->files->file[i]))
+			else if (!is_map(data->files->file[i]))
 			{
 				while (data->files->file[i])
 				{
-					// printf("%s\n", data->files->file[i]);
+					if (!ft_strcmp(data->files->file[i], "NULL"))
+					{
+						ft_putstr_fd("Error : Invalid line in map1\n", 2);
+						exit(EXIT_FAILURE);
+					}
 					if (valid_line(data->files->file[i]))
 					{
 						data->files->map = ft_strjoin(data->files->map,
@@ -85,6 +103,7 @@ void	split_file(t_data *data)
 				}
 				i--;
 			}
+			
 			i++;
 		}
 	}

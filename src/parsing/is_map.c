@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   is_map.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: m-boukel <m-boukel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: xshel <xshel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 11:03:18 by m-boukel          #+#    #+#             */
-/*   Updated: 2023/09/14 12:10:40 by m-boukel         ###   ########.fr       */
+/*   Updated: 2023/10/11 14:33:19 by xshel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@ int	is_valid(char c)
 	return (0);
 }
 
-static int	valid_line(char c)
-{
-	if (is_valid(c))
-		return (1);
-	return (0);
-}
+// static int	valid_line(char c)
+// {
+// 	if (is_valid(c))
+// 		return (1);
+// 	return (0);
+// }
 
 int	is_map(char *buffer)
 {
@@ -34,8 +34,7 @@ int	is_map(char *buffer)
 	i = 0;
 	while (buffer[i])
 	{
-		if (!valid_line(buffer[i]) || !valid_line(buffer[i + 1])
-			|| !valid_line(buffer[i + 2]))
+		if (!is_valid(buffer[i]))
 			return (1);
 		i++;
 	}
