@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_file.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: niboukha <niboukha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: m-boukel <m-boukel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 11:13:29 by m-boukel          #+#    #+#             */
-/*   Updated: 2023/10/12 10:42:53 by niboukha         ###   ########.fr       */
+/*   Updated: 2023/10/12 11:02:38 by m-boukel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	read_file(t_data *data, int fd)
 	char	*buffer;
 
 	str_file = NULL;
+	data->files = malloc(sizeof(t_files));
 	buffer = get_next_line(fd);
 	if (!buffer)
 		buffer = ft_strdup("");
@@ -32,7 +33,8 @@ void	read_file(t_data *data, int fd)
 		free(buffer);
 		buffer = get_next_line(fd);
 	}
-	printf("dkhel\n");
+	// printf("%s\n", str_file);
+	// printf("dkhel\n");
 	data->files->file = ft_split(str_file, '\n');
 	free(str_file);
 }
