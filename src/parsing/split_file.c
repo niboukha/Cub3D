@@ -77,7 +77,7 @@ void	split_file(t_data *data)
 			{
 				while (data->files->file[i])
 				{
-					if (!ft_strcmp(data->files->file[i], "NULL"))
+					if (!ft_strcmp(data->files->file[i], "*"))
 					{
 						ft_putstr_fd("Error : Invalid line in map1\n", 2);
 						exit(EXIT_FAILURE);
