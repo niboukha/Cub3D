@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: niboukha <niboukha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: niboukha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 13:20:43 by m-boukel          #+#    #+#             */
-/*   Updated: 2023/10/10 20:25:20 by niboukha         ###   ########.fr       */
+/*   Updated: 2023/10/07 20:10:01 by niboukha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,6 @@ void    check_map(t_data *data)
         j = 0;
         while (map[i][j])
         {
-            // printf("%s\n", map[i]);
-            // if(map[i][0] == '\n')
-            // {
-            //     printf("new_line error\n");
-            //     exit(1);
-            // }
             if (!valid_char(map[i][j]) && map[i][j] != ' ')
             {
                 ft_putstr_fd("Error : Invalid char in map\n", 2);

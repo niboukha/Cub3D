@@ -6,7 +6,7 @@
 /*   By: niboukha <niboukha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 15:19:36 by niboukha          #+#    #+#             */
-/*   Updated: 2023/10/10 19:01:44 by niboukha         ###   ########.fr       */
+/*   Updated: 2023/10/11 14:00:05 by niboukha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ typedef struct t_coor
 	int		left;
 	int		flag_a;
 	int		coll;
+	int		r;
 }			t_coor;
 
 
@@ -107,6 +108,8 @@ typedef struct t_dr
 {
 	int	x;
 	int	y;
+	int	i;
+	int	j;
 }		t_dr;
 
 typedef struct t_map
@@ -161,5 +164,7 @@ unsigned int	get_color(t_map *map, int x, int y);
 unsigned int	get_color_(t_map *map, int x, int y);
 void    animation_gun(t_map *map, int key_code);
 void	*routine(void *ptr);
+void    open_door(t_map *map);
+int		check_door(t_map *map, int x, int y, int c);
 
 #endif

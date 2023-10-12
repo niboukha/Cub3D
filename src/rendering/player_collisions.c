@@ -6,7 +6,7 @@
 /*   By: niboukha <niboukha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 10:38:52 by niboukha          #+#    #+#             */
-/*   Updated: 2023/10/10 19:01:08 by niboukha         ###   ########.fr       */
+/*   Updated: 2023/10/11 15:04:19 by niboukha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ void	get_coor_player(t_map *map)
 		{
 			if (map->map[i][j] == 'R')
 			{
-				map->dr.x = i;
-				map->dr.y = j;
+				// map->dr.x = i;
+				// map->dr.y = j;
 			}
 			if ((map->map[i][j] == 'N' || map->map[i][j] == 'E'
 				|| map->map[i][j] == 'W' || map->map[i][j] == 'S')
