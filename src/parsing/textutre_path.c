@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   textutre_path.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xshel <xshel@student.42.fr>                +#+  +:+       +#+        */
+/*   By: niboukha <niboukha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 21:06:36 by xshel             #+#    #+#             */
-/*   Updated: 2023/10/13 07:47:58 by xshel            ###   ########.fr       */
+/*   Updated: 2023/10/13 17:43:46 by niboukha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ char	split_tab_or_space(char *s)
 	char	c;
 
 	j = 0;
+    c = '\0';
 	while (s[j])
 	{
 		if (s[j] == ' ' || s[j] == '\t')

@@ -3,27 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   rendering.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: niboukha <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: niboukha <niboukha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 15:19:36 by niboukha          #+#    #+#             */
-/*   Updated: 2023/10/07 12:33:28 by niboukha         ###   ########.fr       */
+/*   Updated: 2023/10/13 17:38:58 by niboukha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RENDERING_H
 #define RENDERING_H
 
-# define A 97
-# define S 115
-# define W 119
-# define D 100
-# define ESC 65307
-# define LEFT 65361
-# define RIGHT 65363
-# define DOWN 65364
-# define UP 65362
-# define H_WIN 641.0
-# define W_WIN 1007.0
+# define A 0
+# define S 1
+# define W 13
+# define D 2
+# define ESC 53
+# define LEFT 123
+# define RIGHT 124
+# define DOWN 125
+# define UP 126
+# define H_WIN 941.0
+# define W_WIN 1507.0
+#define	SPEED 17
+# define ON_KEYDOWN 2
+# define ON_DESTROY 17
+# define SPACE 49
 
 typedef struct t_mini
 {
@@ -55,15 +59,31 @@ typedef struct t_coor
 	int		down;
 	int		right;
 	int		left;
+	int		flag_a;
+	int		coll;
+	int		r;
+	double	d_wall;
 }			t_coor;
+
+
+
+typedef struct t_dir
+{
+	void	*img;
+	int		w;
+	int		h;
+}		t_dir;
 
 typedef struct t_image
 {
+	int		h_img;
+	int		w_img;
 	void	*img;
-	void	*img_n;
-	void	*img_e;
-	void	*img_s;
-	void	*img_w;
+	t_dir	img_n;
+	t_dir	img_e;
+	t_dir	img_s;
+	t_dir	img_w;
+	t_dir	img_d[5];
 	char	*addr;
 	int		bits_per_pixel;
 	int		line_length;
@@ -85,20 +105,37 @@ typedef struct t_wall
 	double	wall_height;
 }			t_wall;
 
+typedef struct t_dr
+{
+	int	v_x;
+	int	v_y;
+	int	h_x;
+	int	h_y;
+	int	x;
+	int	y;
+	int	i;
+	int	j;
+}		t_dr;
+
 typedef struct t_map
 {
 	void		*mlx;
 	void		*mlx_win;
 	void		*mlx_win1;
 	char		**map;
+	int			index;
 	t_coor		coor;
 	t_wall		wall;
 	t_image		image;
 	t_image		img;
 	t_image		textures;
+	t_image		sprit;
+	t_image		door;
 	t_data		*data;
 	t_textures	txt;
 	t_mini		mini;
+	t_dr		dr;
+	pthread_mutex_t	mut;
 }				t_map;
 
 void			rendering(t_map *map);
@@ -123,5 +160,15 @@ void			fill_minimap(t_map *map);
 int				mouse_key(int key_code, int x, int y, t_map *map);
 unsigned int	convert_color(int r, int g, int b);
 void			get_coor_player(t_map *map);
+int				animation(t_map *map);
+unsigned int	get_color(t_map *map, int x, int y);
+unsigned int	get_color_(t_map *map, int x, int y);
+void			animation_gun(t_map *map, int key_code);
+void			*routine(void *ptr);
+void		    open_door(t_map *map);
+int				check_doors(t_map *map, int x, int y, int c);
+void	map_(t_map  *map);
+void	transf_map(t_map *map, int x, int y, int a);
+void	map_door(t_map  *map);
 
 #endif

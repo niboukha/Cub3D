@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   util_functions.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: niboukha <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: niboukha <niboukha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 15:26:19 by niboukha          #+#    #+#             */
-/*   Updated: 2023/10/07 11:18:56 by niboukha         ###   ########.fr       */
+/*   Updated: 2023/10/13 12:18:03 by niboukha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,16 @@ void	init_map(t_map *map)
 	map->wall.y = 0;
 	map->coor.put = 0;
 	map->txt.direction = 0;
+	map->index = 0;
+	map->coor.flag_a = 0;
+	map->coor.r = 0;
+	map->dr.x = 0;
+	map->dr.y = 0;
+	map->dr.v_x = 0;
+	map->dr.v_y = 0;
+	map->dr.h_x = 0;
+	map->dr.h_y = 0;
+	map->coor.d_wall = 0;
 }
 
 int	close_win(void)

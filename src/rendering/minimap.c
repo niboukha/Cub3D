@@ -6,7 +6,7 @@
 /*   By: niboukha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 17:36:04 by niboukha          #+#    #+#             */
-/*   Updated: 2023/10/07 12:28:53 by niboukha         ###   ########.fr       */
+/*   Updated: 2023/10/07 20:53:21 by niboukha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	put_pixel_minimap(t_map *map, int i, int j)
 		my_mlx_put_pixel(&map->image, j, i, 0xf0f0f0);
 	else if (map->map[map->mini.e / 64][map->mini.f / 64] == '0')
 		my_mlx_put_pixel(&map->image, j, i, 0x0000ff);
+	else if (map->map[map->mini.e / 64][map->mini.f / 64] == 'R')
+		my_mlx_put_pixel(&map->image, j, i, 0x008000);
 	else
 		my_mlx_put_pixel(&map->image, j, i, 0x0000);
 	if (map->map[map->mini.e / 64][map->mini.f / 64] == 'N'

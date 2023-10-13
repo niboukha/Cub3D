@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: m-boukel <m-boukel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aait-lfd <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 02:49:49 by aait-lfd          #+#    #+#             */
-/*   Updated: 2023/10/08 16:19:34 by m-boukel         ###   ########.fr       */
+/*   Updated: 2023/06/15 14:40:11 by aait-lfd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,5 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		}
 		subs[len] = 0;
 	}
-	// free((char *)s);
 	return (subs);
 }
