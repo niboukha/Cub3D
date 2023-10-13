@@ -1,44 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_player.c                                      :+:      :+:    :+:   */
+/*   check_doors.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: niboukha <niboukha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/10 15:15:31 by niboukha          #+#    #+#             */
-/*   Updated: 2023/10/13 20:24:45 by niboukha         ###   ########.fr       */
+/*   Created: 2023/10/13 20:18:06 by niboukha          #+#    #+#             */
+/*   Updated: 2023/10/13 20:18:22 by niboukha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-void	*routine(void *ptr)
+int	check_doors(t_map *map, int x, int y, int c)
 {
-	t_map	*map;
+	int	i;
+	int	j;
 
-	map = (t_map *)ptr;
-	while (1)
+	i = 0;
+	while (i < map->coor.y)
 	{
-		usleep(50000);
-		pthread_mutex_lock(&map->mut);
-		map->index++;
-		pthread_mutex_unlock(&map->mut);
-		if (map->index > 4)
+		j = 0;
+		while (x / 64 < (int)ft_strlen(map->map[i])
+			&& j < (int)ft_strlen(map->map[i]))
 		{
-			map->index = 0;
-			break ;
+			if (map->map[i][x / 64] == 'R'
+				&& j == x / 64 && c == 2)
+				return (1);
+			if (map->map[i][j] == 'R' && i == y / 64 && c == 1)
+				return (2);
+			j++;
 		}
+		i++;
 	}
-	return (NULL);
-}
-
-void	animation_gun(t_map *map, int key_code)
-{
-	pthread_t	th;
-
-	if (key_code == SPACE)
-	{
-		if (pthread_create(&th, NULL, routine, map) == -1)
-			exit(1);
-	}
+	return (0);
 }

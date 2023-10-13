@@ -6,7 +6,7 @@
 /*   By: niboukha <niboukha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 09:52:32 by niboukha          #+#    #+#             */
-/*   Updated: 2023/10/13 17:10:24 by niboukha         ###   ########.fr       */
+/*   Updated: 2023/10/13 20:13:11 by niboukha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,24 @@ void	draw_floor(t_map *map, int x, int y)
 	my_mlx_put_pixel(&map->image, x, y, color);
 }
 
+void	draw_wall_door(t_map *map, int start)
+{
+	if (map->coor.flag_a == 1)
+	{
+		map->dr.j = (start - (H_WIN / 2) + (map->wall.wall_height / 2))
+			* map->door.h_img / map->wall.wall_height;
+		my_mlx_put_pixel(&map->image, map->wall.x, map->wall.y + start,
+			get_color_(map, map->dr.i, map->dr.j));
+	}
+	else
+	{
+		map->txt.y = (start - (H_WIN / 2) + (map->wall.wall_height / 2))
+			* map->textures.h_img / map->wall.wall_height;
+		my_mlx_put_pixel(&map->image, map->wall.x, map->wall.y + start,
+			get_color(map, map->txt.x, map->txt.y));
+	}
+}
+
 void	draw_walls(t_map *map, double angle)
 {
 	int	j;
@@ -65,20 +83,7 @@ void	draw_walls(t_map *map, double angle)
 			draw_ciel(map, map->wall.x, map->wall.y + j);
 		if (start < (H_WIN / 2) + (map->wall.wall_height / 2))
 		{
-			if (map->coor.flag_a == 1)
-			{
-				map->dr.j = (start - (H_WIN / 2) + (map->wall.wall_height / 2))
-						* map->door.h_img / map->wall.wall_height;
-				my_mlx_put_pixel(&map->image, map->wall.x, map->wall.y + start,
-					get_color_(map, map->dr.i, map->dr.j));
-			}
-			else
-			{
-				map->txt.y = (start - (H_WIN / 2) + (map->wall.wall_height / 2))
-					* map->textures.h_img / map->wall.wall_height;
-				my_mlx_put_pixel(&map->image, map->wall.x, map->wall.y + start,
-					get_color(map, map->txt.x, map->txt.y));	
-			}
+			draw_wall_door(map, start);
 			start++;
 		}
 		if (j >= (H_WIN / 2) + (map->wall.wall_height / 2))

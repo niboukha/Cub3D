@@ -6,7 +6,7 @@
 /*   By: niboukha <niboukha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 15:24:04 by niboukha          #+#    #+#             */
-/*   Updated: 2023/10/11 10:46:32 by niboukha         ###   ########.fr       */
+/*   Updated: 2023/10/13 20:59:45 by niboukha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	my_mlx_put_pixel(t_image *img, int x, int y, int color)
 {
 	char	*dst;
-	
+
 	if (x >= 0 && x < W_WIN && y >= 0 && y < H_WIN)
 	{
 		dst = img->addr + ((y * img->line_length)

@@ -1,7 +1,7 @@
 NO     ./textures/no.xpm
 
 
-SO  ./textures/so.xpm
+SO       ./textures/so.xpm
 
 
 
@@ -10,11 +10,11 @@ WE    ./textures/we.xpm
 
 
 
-EA      ./textures/skull.xpm
+EA     ./textures/skull.xpm
 
 
-F 40,54,
-C 4,159,214
+F 40,54,24
+C 4,159,55
 
 
 

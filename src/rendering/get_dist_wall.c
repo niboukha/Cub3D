@@ -6,32 +6,41 @@
 /*   By: niboukha <niboukha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 15:01:54 by niboukha          #+#    #+#             */
-/*   Updated: 2023/10/13 17:39:15 by niboukha         ###   ########.fr       */
+/*   Updated: 2023/10/13 20:39:39 by niboukha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
+
+void	get_hor_door(t_map *map)
+{
+	if (check_if_wall(map, map->wall.h_x, map->wall.h_y) == 1
+		|| !check_doors(map, map->wall.h_x, map->wall.h_y, 2))
+		map->coor.flag_a = 0;
+	map->coor.d_wall = map->coor.d;
+	if (map->coor.d <= 100)
+	{	
+		if (check_doors(map, map->wall.h_x, map->wall.h_y, 2) == 1)
+		{
+			if (map->map[(int)map->wall.h_y / 64 - 1]
+				[(int)map->wall.h_x / 64] == 'R')
+				map->map[(int)map->wall.h_y / 64 - 1]
+				[(int)map->wall.h_x / 64] = '2';
+			else if (map->map[(int)map->wall.h_y / 64]
+				[(int)map->wall.h_x / 64] == 'R')
+				map->map[(int)map->wall.h_y / 64]
+				[(int)map->wall.h_x / 64] = '2';
+			map->coor.flag_a = 0;
+		}
+	}
+}
 
 void	get_addr_hor(t_map *map, double angle)
 {
 	map->coor.d = map->coor.d_h;
 	if (map->coor.flag_a == 1)
 	{
-		if (check_if_wall(map, map->wall.h_x, map->wall.h_y) == 1
-			|| !check_doors(map, map->wall.h_x, map->wall.h_y, 2))
-			map->coor.flag_a = 0;
-		map->coor.d_wall = map->coor.d;
-		if (map->coor.d <= 100)
-		{	
-			if (check_doors(map, map->wall.h_x, map->wall.h_y, 2) == 1)
-			{
-				if (map->map[(int)map->wall.h_y / 64 - 1][(int)map->wall.h_x / 64] == 'R')
-					map->map[(int)map->wall.h_y / 64 - 1][(int)map->wall.h_x / 64] = '2';
-				else if (map->map[(int)map->wall.h_y / 64][(int)map->wall.h_x / 64] == 'R')
-					map->map[(int)map->wall.h_y / 64][(int)map->wall.h_x / 64] = '2';
-				map->coor.flag_a = 0;
-			}
-		}
+		get_hor_door(map);
 		map->dr.i = ((int)map->wall.h_x) % map->door.w_img;
 		map->door.addr = mlx_get_data_addr(map->door.img,
 				&map->door.bits_per_pixel,
@@ -55,27 +64,36 @@ void	get_addr_hor(t_map *map, double angle)
 	}
 }
 
+void	get_ver_door(t_map *map)
+{
+	if (check_if_wall(map, map->wall.v_x, map->wall.v_y) == 1
+		|| !check_doors(map, map->wall.v_x, map->wall.v_y, 1))
+		map->coor.flag_a = 0;
+	map->coor.d_wall = map->coor.d;
+	if (map->coor.d <= 100)
+	{
+		if (check_doors(map, map->wall.v_x, map->wall.v_y, 1) == 2)
+		{
+			if (map->map[(int)map->wall.v_y / 64]
+				[(int)map->wall.v_x / 64 - 1] == 'R')
+				map->map[(int)map->wall.v_y / 64]
+				[(int)map->wall.v_x / 64 - 1] = '2';
+			else if (map->map[(int)map->wall.v_y / 64]
+				[(int)map->wall.v_x / 64] == 'R')
+				map->map[(int)map->wall.v_y / 64]
+				[(int)map->wall.v_x / 64] = '2';
+			map->coor.flag_a = 0;
+		}
+	}
+	map->dr.i = ((int)map->wall.v_y) % map->door.w_img;
+}
+
 void	get_addr_ver(t_map *map, double angle)
 {
 	map->coor.d = map->coor.d_v;
 	if (map->coor.flag_a == 1)
 	{
-		if (check_if_wall(map, map->wall.v_x, map->wall.v_y) == 1
-			|| !check_doors(map, map->wall.v_x, map->wall.v_y, 1))
-			map->coor.flag_a = 0;
-		map->coor.d_wall = map->coor.d;
-		if (map->coor.d <= 100)
-		{
-			if (check_doors(map, map->wall.v_x, map->wall.v_y, 1) == 2)
-			{
-				if (map->map[(int)map->wall.v_y / 64][(int)map->wall.v_x / 64 - 1] == 'R')
-					map->map[(int)map->wall.v_y / 64][(int)map->wall.v_x / 64 - 1] = '2';
-				else if (map->map[(int)map->wall.v_y / 64][(int)map->wall.v_x / 64] == 'R')
-					map->map[(int)map->wall.v_y / 64][(int)map->wall.v_x / 64] = '2';
-				map->coor.flag_a = 0;
-			}
-		}
-		map->dr.i = ((int)map->wall.v_y) % map->door.w_img;
+		get_ver_door(map);
 		map->door.addr = mlx_get_data_addr(map->door.img,
 				&map->door.bits_per_pixel,
 				&map->door.line_length, &map->door.endian);

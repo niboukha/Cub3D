@@ -6,7 +6,7 @@
 /*   By: niboukha <niboukha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 16:51:37 by niboukha          #+#    #+#             */
-/*   Updated: 2023/10/13 16:00:23 by niboukha         ###   ########.fr       */
+/*   Updated: 2023/10/13 20:57:53 by niboukha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ void	rotation_player_key(t_map *map, int key_code)
 	}
 }
 
-
 void	mouvement_player_key(t_map *map, int key_code)
 {
 	map->coor.coll = 0;
@@ -57,66 +56,17 @@ void	mouvement_player_key(t_map *map, int key_code)
 		mouve_player(map,
 			map->coor.px - roundf(cos(map->coor.angle) * SPEED),
 			map->coor.py - roundf(sin(map->coor.angle) * SPEED));
-		if (!map->coor.coll)
-		{
-			if (map->coor.angle > M_PI / 2 && map->coor.angle < 3 * M_PI / 2)
-				mouve_player(map,
-					map->coor.px - roundf(cos(map->coor.angle) * sin(map->coor.angle)),
-					map->coor.py - roundf(sin(map->coor.angle) * SPEED));
-			else
-			{
-				mouve_player(map,
-					map->coor.px - roundf(cos(map->coor.angle) * cos(map->coor.angle)),
-					map->coor.py - roundf(sin(map->coor.angle) * SPEED));
-			}
-
-			if (map->coor.angle > 0 && map->coor.angle < M_PI)
-			{
-				mouve_player(map,
-					map->coor.px - roundf(cos(map->coor.angle) * SPEED),
-					map->coor.py - roundf(sin(map->coor.angle) * sin(map->coor.angle)));
-			}
-			else
-			{
-				mouve_player(map,
-					map->coor.px - roundf(cos(map->coor.angle) * SPEED),
-					map->coor.py - roundf(sin(map->coor.angle) * cos(map->coor.angle)));
-			}
-		}
+		mvmt_coll_down(map);
 	}
 	if (key_code == W || key_code == UP)
 	{
 		mouve_player(map,
 			map->coor.px + roundf(cos(map->coor.angle) * SPEED),
 			map->coor.py + roundf(sin(map->coor.angle) * SPEED));
-		if (!map->coor.coll)
-		{
-			if (map->coor.angle > M_PI / 2 && map->coor.angle < 3 * M_PI / 2)
-				mouve_player(map,
-					map->coor.px + roundf(cos(map->coor.angle) * sin(map->coor.angle)),
-					map->coor.py + roundf(sin(map->coor.angle) * SPEED));
-			else
-			{
-				mouve_player(map,
-					map->coor.px + roundf(cos(map->coor.angle) * cos(map->coor.angle)),
-					map->coor.py + roundf(sin(map->coor.angle) * SPEED));
-			}
-
-			if (map->coor.angle > 0 && map->coor.angle < M_PI)
-			{
-				mouve_player(map,
-					map->coor.px + roundf(cos(map->coor.angle) * SPEED),
-					map->coor.py + roundf(sin(map->coor.angle) * sin(map->coor.angle)));
-			}
-			else
-			{
-				mouve_player(map,
-					map->coor.px + roundf(cos(map->coor.angle) * SPEED),
-					map->coor.py + roundf(sin(map->coor.angle) * cos(map->coor.angle)));
-			}
-		}
+		mvmt_coll_up(map);
 	}
 }
+
 int	key(int key_code, t_map *map)
 {
 	mouvement_player_key(map, key_code);
@@ -127,59 +77,4 @@ int	key(int key_code, t_map *map)
 	mlx_put_image_to_window(map->mlx, map->mlx_win, map->sprit.img_d[0].img,
 		W_WIN / 2, H_WIN - map->sprit.img_d[0].h);
 	return (0);
-}
-
-int	mouse_key(int key_code, int x, int y, t_map *map)
-{
-	if (key_code == 5)
-		mouve_player(map,
-			map->coor.px - roundf(cos(map->coor.angle) * SPEED),
-			map->coor.py - roundf(sin(map->coor.angle) * SPEED));
-	if (key_code == 4)
-		mouve_player(map,
-			map->coor.px + roundf(cos(map->coor.angle) * SPEED),
-			map->coor.py + roundf(sin(map->coor.angle) * SPEED));
-	if (key_code == 2)
-	{
-		map->coor.angle += 0.05;
-		if (map->coor.angle >= 2 * M_PI)
-			map->coor.angle -= 2 * M_PI;
-	}
-	if (key_code == 1)
-	{
-		map->coor.angle -= 0.05;
-		if (map->coor.angle < 0)
-			map->coor.angle += 2 * M_PI;
-	}
-	if (key_code == 3)
-	{
-		if (map->coor.d_wall > 100)
-			map_(map);
-	}
-	(void)x;
-	(void)y;
-	fill_map3(map);
-	put_pixel(map);
-	mlx_put_image_to_window(map->mlx, map->mlx_win, map->sprit.img_d[0].img,
-		W_WIN / 2, H_WIN - map->sprit.img_d[0].h);
-	return (0);
-}
-
-void	map_(t_map  *map)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (i < map->coor.y)
-	{
-		j = 0;
-		while (j < (int)ft_strlen(map->map[i]))
-		{
-			if (map->map[i][j] == '2')
-				map->map[i][j] = 'R';
-			j++;
-		}
-		i++;
-	}
 }

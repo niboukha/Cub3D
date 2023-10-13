@@ -6,7 +6,7 @@
 /*   By: niboukha <niboukha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 15:19:36 by niboukha          #+#    #+#             */
-/*   Updated: 2023/10/13 17:38:58 by niboukha         ###   ########.fr       */
+/*   Updated: 2023/10/13 20:57:45 by niboukha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,10 +165,11 @@ unsigned int	get_color(t_map *map, int x, int y);
 unsigned int	get_color_(t_map *map, int x, int y);
 void			animation_gun(t_map *map, int key_code);
 void			*routine(void *ptr);
-void		    open_door(t_map *map);
 int				check_doors(t_map *map, int x, int y, int c);
-void	map_(t_map  *map);
-void	transf_map(t_map *map, int x, int y, int a);
-void	map_door(t_map  *map);
+int				mouse_key(int key_code, int x, int y, t_map *map);
+void   			mouse_(t_map *map, int key_code);
+void			map_(t_map  *map);
+void		mvmt_coll_down(t_map *map);
+void		mvmt_coll_up(t_map *map);
 
 #endif
