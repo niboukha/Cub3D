@@ -6,7 +6,7 @@
 /*   By: niboukha <niboukha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 21:06:36 by xshel             #+#    #+#             */
-/*   Updated: 2023/10/13 17:43:46 by niboukha         ###   ########.fr       */
+/*   Updated: 2023/10/13 17:53:05 by niboukha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ int	check_texture_path(t_data *data)
 	data->files->d_spl = ft_split(data->files->d, '\n');
 	if (check_split_count(data->files->d_spl, 4))
 	{
-		ft_putstr_fd("Error : Texture path not valid\n", 2);
+		ft_putstr_fd("Error : Texture path not valid1\n", 2);
 		exit(1);
 	}
 	i = 0;
