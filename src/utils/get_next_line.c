@@ -51,7 +51,8 @@ char	*next_line(char *str)
 		free(str);
 		return (NULL);
 	}
-	str = ft_substr_get_next_line(str, i + 1, strlen_get_next_line(str) - i - 1);
+	str = ft_substr_get_next_line(str, i + 1, strlen_get_next_line(str) - i
+			- 1);
 	return (str);
 }
 

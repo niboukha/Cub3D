@@ -6,7 +6,7 @@
 /*   By: xshel <xshel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 05:10:54 by m-boukel          #+#    #+#             */
-/*   Updated: 2023/10/10 19:44:58 by xshel            ###   ########.fr       */
+/*   Updated: 2023/10/13 12:51:12 by xshel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	check_cara(char *s, int j)
 {
 	while (s[j])
 	{
-		if (!(s[j] >= '0' && s[j] <= '9') && s[j] != ',' && s[j] != ' ' && s[j] != '\t')
+		if (!(s[j] >= '0' && s[j] <= '9') && s[j] != ',')
 		{
 			ft_putstr_fd("Error : exist of another char\n", 2);
 			exit(1);
@@ -33,7 +33,7 @@ int	ft_new_atoi(char *str)
 
 	i = 0;
 	result = 0;
-	sign = 1; 
+	sign = 1;
 	while (str[i] && str[i] <= 32)
 		i++;
 	if (str[i] == '+' || str[i] == '-')

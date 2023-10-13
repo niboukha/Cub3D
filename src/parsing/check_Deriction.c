@@ -6,7 +6,7 @@
 /*   By: xshel <xshel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 11:21:10 by m-boukel          #+#    #+#             */
-/*   Updated: 2023/10/10 13:15:55 by xshel            ###   ########.fr       */
+/*   Updated: 2023/10/13 07:42:43 by xshel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,33 +36,32 @@ void	fill_deriction(t_data *data, char **str)
 	}
 }
 
-int	check_Deriction(t_data *data)
+int	check_split_count(char **str, int n)
 {
-	char **str;
-	char **tmp;
-	int i;
-	int j;
+	int	i;
 
 	i = 0;
-	str = ft_split(data->files->d, '\n');
-
 	while (str[i])
 		i++;
-	if (i > 4)
-	{
-		free_string(str);
+	if (i > n)
 		return (1);
-	}
-	fill_deriction(data, str);
+	return (0);
+}
 
+int	check_deriction(t_data *data)
+{
+	char	**str;
+	char	**tmp;
+	int		i;
+	int		j;
+
+	str = ft_split(data->files->d, '\n');
+	if (check_split_count(str, 5))
+		return (free_string(str), 1);
+	fill_deriction(data, str);
 	if (!(data->deriction->no == 1 && data->deriction->so == 1
 			&& data->deriction->we == 1 && data->deriction->ea == 1))
-	{
-		free_string(str);
-		free(data->deriction);
-		return (1);
-	}
-
+		return (free_string(str), free(data->deriction), 1);
 	i = 0;
 	while (str[i])
 	{
@@ -72,13 +71,8 @@ int	check_Deriction(t_data *data)
 			j++;
 		free_string(tmp);
 		if (j != 2)
-		{
-			free_string(str);
-			free(data->deriction);
-			return (1);
-		}
+			return (free_string(str), free(data->deriction), 1);
 		i++;
 	}
-	free_string(str);
-	return (0);
+	return (free_string(str), 0);
 }

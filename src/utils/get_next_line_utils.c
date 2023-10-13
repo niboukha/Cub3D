@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: m-boukel <m-boukel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: xshel <xshel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/1(1/08 11:26:52 by m-boukel          #+#    #+#             */
-/*   Updated: 2023/10/08 16:24:18 by m-boukel         ###   ########.fr       */
+/*   Created: 2022/01/08 11:26:05 by  m-boukel         #+#    #+#             */
+/*   Updated: 2023/10/13 12:52:44 by xshel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char	*ft_strchr_get_next_line(char *str, int c)
 	return (0);
 }
 
-int strlen_get_next_line(char *str)
+int	strlen_get_next_line(char *str)
 {
 	int	i;
 

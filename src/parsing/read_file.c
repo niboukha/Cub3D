@@ -6,12 +6,11 @@
 /*   By: xshel <xshel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 11:13:29 by m-boukel          #+#    #+#             */
-/*   Updated: 2023/10/11 10:49:54 by xshel            ###   ########.fr       */
+/*   Updated: 2023/10/12 08:58:12 by xshel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
-
 
 void	read_file(t_data *data, int fd)
 {

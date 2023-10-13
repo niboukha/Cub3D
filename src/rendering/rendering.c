@@ -6,7 +6,7 @@
 /*   By: xshel <xshel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 15:19:31 by niboukha          #+#    #+#             */
-/*   Updated: 2023/10/09 10:06:50 by xshel            ###   ########.fr       */
+/*   Updated: 2023/10/13 15:35:19 by xshel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,15 @@ void	init_mlx(t_map *map)
 			&map->image.bits_per_pixel, &map->image.line_length,
 			&map->image.endian);
 	map->textures.img_w = mlx_xpm_file_to_image(map->mlx,
-			"/home/xshel/Desktop/my_cub/textures/west.xpm", &w_img, &h_img);
+			"/home/xshel/Desktop/my_cub/textures/west1.xpm", &w_img, &h_img);
 	map->textures.img_e = mlx_xpm_file_to_image(map->mlx,
-			"/home/xshel/Desktop/my_cub/textures/east.xpm",
+			"/home/xshel/Desktop/my_cub/textures/east1.xpm",
 			&w_img, &h_img);
 	map->textures.img_s = mlx_xpm_file_to_image(map->mlx,
-			"/home/xshel/Desktop/my_cub/textures/south.xpm",
+			"/home/xshel/Desktop/my_cub/textures/south1.xpm",
 			&w_img, &h_img);
 	map->textures.img_n = mlx_xpm_file_to_image(map->mlx,
-			"/home/xshel/Desktop/my_cub/textures/north.xpm",
+			"/home/xshel/Desktop/my_cub/textures/north1.xpm",
 			&w_img, &h_img);
 }
 

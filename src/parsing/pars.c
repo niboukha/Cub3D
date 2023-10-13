@@ -6,7 +6,7 @@
 /*   By: xshel <xshel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 03:34:30 by m-boukel          #+#    #+#             */
-/*   Updated: 2023/10/11 14:35:33 by xshel            ###   ########.fr       */
+/*   Updated: 2023/10/13 07:45:45 by xshel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,19 +63,16 @@ int	parsing(t_data *data, t_map *map, int fd)
 	if (!check_texture_path(data))
 	{
 		ft_putstr_fd("Error : Texture path not valid\n", 2);
-		// free_files(data);
 		exit(EXIT_FAILURE);
 	}
-	if (check_Deriction(data))
+	if (check_deriction(data))
 	{
 		ft_putstr_fd("Error : Deriction not valid\n", 2);
-		// free_files(data);
 		exit(EXIT_FAILURE);
 	}
 	if (check_colors(data))
 	{
 		ft_putstr_fd("Error : Colors not valid\n", 2);
-		// free_files(data);
 		exit(EXIT_FAILURE);
 	}
 	check_map(data);
