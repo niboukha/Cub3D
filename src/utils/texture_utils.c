@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xshel <xshel@student.42.fr>                +#+  +:+       +#+        */
+/*   By: m-boukel <m-boukel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 11:03:37 by xshel             #+#    #+#             */
-/*   Updated: 2023/10/13 12:50:44 by xshel            ###   ########.fr       */
+/*   Updated: 2023/10/13 20:30:40 by m-boukel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,13 @@ int	is_texture(t_data *data, int i)
 			+ 1] == 'E'))
 		return (1);
 	return (0);
+}
+
+void	check_empty_path(char **tmp)
+{
+	if (!tmp[1])
+	{
+		ft_putstr_fd("Error : Emty texture path\n", 2);
+		exit(EXIT_FAILURE);
+	}
 }

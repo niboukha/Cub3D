@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   colors_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: niboukha <niboukha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: m-boukel <m-boukel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 14:47:12 by xshel             #+#    #+#             */
-/*   Updated: 2023/10/13 17:35:26 by niboukha         ###   ########.fr       */
+/*   Updated: 2023/10/13 20:33:13 by m-boukel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ void	check_coma(char *s)
 			error += 1;
 		if (s[i] == ',')
 			count += 1;
+		if (s[i] == ',' && s[i + 1] == '\0')
+			error += 1;
 		i++;
 	}
 	if (count != 2 || error != 0)

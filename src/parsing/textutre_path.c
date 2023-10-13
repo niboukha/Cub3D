@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   textutre_path.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: niboukha <niboukha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: m-boukel <m-boukel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 21:06:36 by xshel             #+#    #+#             */
-/*   Updated: 2023/10/13 17:53:05 by niboukha         ###   ########.fr       */
+/*   Updated: 2023/10/13 20:32:45 by m-boukel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char	split_tab_or_space(char *s)
 	char	c;
 
 	j = 0;
-    c = '\0';
+	c = '\0';
 	while (s[j])
 	{
 		if (s[j] == ' ' || s[j] == '\t')
@@ -53,6 +53,7 @@ int	direction_name(t_data *data, char **tmp)
 	if (ft_strcmp(tmp[0], "NO") == 0 || ft_strcmp(tmp[0], "SO") == 0
 		|| ft_strcmp(tmp[0], "WE") == 0 || ft_strcmp(tmp[0], "EA") == 0)
 	{
+		check_empty_path(tmp);
 		if (ft_strcmp(tmp[0], "NO") == 0)
 			data->files->texture._no = ft_strdup(tmp[1]);
 		else if (ft_strcmp(tmp[0], "SO") == 0)

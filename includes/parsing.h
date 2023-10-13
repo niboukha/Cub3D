@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: niboukha <niboukha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: m-boukel <m-boukel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 12:58:47 by m-boukel          #+#    #+#             */
-/*   Updated: 2023/10/13 17:38:05 by niboukha         ###   ########.fr       */
+/*   Updated: 2023/10/13 20:31:17 by m-boukel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ int is_texture(t_data *data, int i);
 void	joint(t_data *data, int i);
 int		check_texture_path(t_data *data);
 int		check_deriction(t_data *data);
-
+void	check_empty_path(char **tmp);
 /*=============================================================*/
 
 /*=========================Check_colors=========================*/
