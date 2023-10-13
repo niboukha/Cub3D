@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inter_hor.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: niboukha <niboukha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: niboukha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 15:59:16 by niboukha          #+#    #+#             */
-/*   Updated: 2023/10/11 11:25:30 by niboukha         ###   ########.fr       */
+/*   Updated: 2023/10/06 18:54:18 by niboukha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,6 @@ void	coor_of_hor_wall(t_map *map, double x, double y)
 		x += map->wall.gh_x;
 		y += map->wall.gh_y;
 	}
-	if (check_if_wall(map, x, y) == 2)
-		map->coor.flag_a = 1;
 	map->wall.h_x = x;
 	map->wall.h_y = y;
 	map->coor.up = 0;

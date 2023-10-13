@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cast_rays.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: niboukha <niboukha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: niboukha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 09:52:32 by niboukha          #+#    #+#             */
-/*   Updated: 2023/10/11 15:30:02 by niboukha         ###   ########.fr       */
+/*   Updated: 2023/10/07 11:21:17 by niboukha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,12 @@ void	fill_map3(t_map *map)
 		}
 		i++;
 	}
+}
+
+unsigned int	get_color(t_map *map, int x, int y)
+{
+	return (*(unsigned int *)(map->textures.addr + y * map->textures.line_length
+		+ x * (map->textures.bits_per_pixel / 8)));
 }
 
 void	draw_ciel(t_map *map, int x, int y)
@@ -66,16 +72,9 @@ void	draw_walls(t_map *map, double angle)
 		if (start < (H_WIN / 2) + (map->wall.wall_height / 2))
 		{
 			map->txt.y = (start - (H_WIN / 2) + (map->wall.wall_height / 2))
-				* map->textures.h_img / map->wall.wall_height;
+				* 64.0 / map->wall.wall_height;
 			my_mlx_put_pixel(&map->image, map->wall.x, map->wall.y + start,
 				get_color(map, map->txt.x, map->txt.y));
-			if (map->coor.flag_a == 1)
-			{
-				map->dr.j = (start - (H_WIN / 2) + (map->wall.wall_height / 2))
-						* map->door.h_img / map->wall.wall_height;
-				my_mlx_put_pixel(&map->image, map->wall.x, map->wall.y + start,
-					get_color_(map, map->dr.i, map->dr.j));
-			}
 			start++;
 		}
 		if (j >= (H_WIN / 2) + (map->wall.wall_height / 2))

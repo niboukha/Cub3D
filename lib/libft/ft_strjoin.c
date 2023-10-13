@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aait-lfd <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: m-boukel <m-boukel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 14:03:00 by aait-lfd          #+#    #+#             */
-/*   Updated: 2023/06/10 17:21:23 by aait-lfd         ###   ########.fr       */
+/*   Updated: 2023/10/08 16:08:45 by m-boukel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,6 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		while (s2[j])
 			result[i++] = s2[j++];
 	}
+	free((char *)s1);
 	return (result);
 }

@@ -1,20 +1,14 @@
-NO     ./textures/no.xpm
+NO     ./textures/north.xpm
+SO       ./textures/south.xpm
+WE     ./textures/west.xpm
 
 
-SO       ./textures/so.xpm
+EA 	./textures/east.xpm
 
 
+C 21,     7,84
+F 73,55,60
 
-
-WE    ./textures/we.xpm
-
-
-
-EA ./textures/skull.xpm
-
-
-F 40,54,24
-C 4,159,214
 
 
 
@@ -23,6 +17,8 @@ C 4,159,214
         1011000001110000000100001
         1001000000000000000000001
 111111111011000001110000000N0001
+
+
 100000000011000001110111111111111
 11110111111111010000000000001
 11110111111111011101010010001
