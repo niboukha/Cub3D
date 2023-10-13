@@ -6,7 +6,7 @@
 /*   By: xshel <xshel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 12:58:47 by m-boukel          #+#    #+#             */
-/*   Updated: 2023/10/09 10:10:01 by xshel            ###   ########.fr       */
+/*   Updated: 2023/10/13 12:51:39 by xshel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,20 +74,41 @@ typedef struct data
 	t_ppos		*pos;
 }					t_data;
 
-void	check_map(t_data *data);
-int		is_valid(char c);
-int		is_map(char *buffer);
-void	read_file(t_data *data, int fd);
-void	read_map(t_data *data, int fd);
-void	split_file(t_data *data);
-int		check_Deriction(t_data *data);
-int		check_colors(t_data *data);
-int		ft_new_atoi(char *str);
-void	check_player_pos(t_data *data);
+/*=========================Check_texture=======================*/
+int is_texture(t_data *data, int i);
+void	joint(t_data *data, int i);
 int		check_texture_path(t_data *data);
-void	free_files(t_data *data);
+int		check_deriction(t_data *data);
+
+/*=============================================================*/
+
+/*=========================Check_colors=========================*/
+int		check_colors(t_data *data);
+void	check_coma(char *s);
+void	split_rgb(t_color *color, char *str, int i);
+void	joinc(t_data *data, int i);
+int		is_color(char *s);
+/*==============================================================*/
+
+/*=========================Check_map============================*/
+void	check_player_pos(t_data *data);
+int		check_char(char c);
+int		valid_char(char c);
+void	check_door(char **map, int i, int j);
+void	check_map(t_data *data);
+int		is_map(char *buffer);
+void	empty_line(t_data *data, int i);
+void	invalid_char(t_data *data, int i);
+void	joinm(t_data *data, int i);
+/*==============================================================*/
+
+/*=========================help_func==========================*/
+int		is_valid(char c);
+void	read_file(t_data *data, int fd);
+void	split_file(t_data *data);
+int		ft_new_atoi(char *str);
 int		free_string(char **str);
-void	free_colors(t_c_c *colors);
-void	free_data(t_data *data);
+int		check_split_count(char **str, int n);
+/*=============================================================*/
 
 #endif
