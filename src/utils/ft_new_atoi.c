@@ -6,7 +6,7 @@
 /*   By: m-boukel <m-boukel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 10:05:02 by m-boukel          #+#    #+#             */
-/*   Updated: 2023/10/14 10:05:05 by m-boukel         ###   ########.fr       */
+/*   Updated: 2023/10/14 10:46:37 by m-boukel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	ft_new_atoi(char *str)
 		result = result * 10 + str[i++] - 48;
 	if ((result * sign) > INT_MAX || (result * sign) < INT_MIN)
 	{
-		write(2, "Error\n", 7);
+		write(2, "Error6\n", 7);
 		exit(1);
 	}
 	return (result * sign);

@@ -5,12 +5,26 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: m-boukel <m-boukel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/03 13:04:16 by m-boukel          #+#    #+#             */
-/*   Updated: 2023/10/14 10:06:14 by m-boukel         ###   ########.fr       */
+/*   Created: 2023/10/14 10:44:53 by m-boukel          #+#    #+#             */
+/*   Updated: 2023/10/14 10:53:21 by m-boukel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
+
+int	check_hidden_file(char *s)
+{
+	int	i;
+
+	i = 0;
+	while (s[i])
+	{
+		if (s[i] == '/' && s[i + 1] == '.')
+			return (1);
+		i++;
+	}
+	return (0);
+}
 
 int	main(int ac, char **av)
 {
@@ -20,9 +34,10 @@ int	main(int ac, char **av)
 
 	map = malloc(sizeof(t_map));
 	data.files = malloc(sizeof(t_files));
-	if (ac != 2 || ft_strncmp(av[1] + ft_strlen(av[1]) - 4, ".cub", 4) != 0)
+	if (ac != 2 || ft_strncmp(av[1] + ft_strlen(av[1]) - 4, ".cub", 4)
+		|| check_hidden_file(av[1]))
 	{
-		ft_putstr_fd("Error : file name", 2);
+		ft_putstr_fd("Error : file name\n", 2);
 		exit(EXIT_FAILURE);
 	}
 	fd = open(av[1], O_RDONLY);
