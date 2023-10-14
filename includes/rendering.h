@@ -6,12 +6,12 @@
 /*   By: niboukha <niboukha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 15:19:36 by niboukha          #+#    #+#             */
-/*   Updated: 2023/10/13 20:57:45 by niboukha         ###   ########.fr       */
+/*   Updated: 2023/10/14 10:34:06 by niboukha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RENDERING_H
-#define RENDERING_H
+# define RENDERING_H
 
 # define A 0
 # define S 1
@@ -24,7 +24,7 @@
 # define UP 126
 # define H_WIN 941.0
 # define W_WIN 1507.0
-#define	SPEED 17
+# define SPEED 17
 # define ON_KEYDOWN 2
 # define ON_DESTROY 17
 # define SPACE 49
@@ -64,8 +64,6 @@ typedef struct t_coor
 	int		r;
 	double	d_wall;
 }			t_coor;
-
-
 
 typedef struct t_dir
 {
@@ -119,22 +117,22 @@ typedef struct t_dr
 
 typedef struct t_map
 {
-	void		*mlx;
-	void		*mlx_win;
-	void		*mlx_win1;
-	char		**map;
-	int			index;
-	t_coor		coor;
-	t_wall		wall;
-	t_image		image;
-	t_image		img;
-	t_image		textures;
-	t_image		sprit;
-	t_image		door;
-	t_data		*data;
-	t_textures	txt;
-	t_mini		mini;
-	t_dr		dr;
+	void			*mlx;
+	void			*mlx_win;
+	void			*mlx_win1;
+	char			**map;
+	int				index;
+	t_coor			coor;
+	t_wall			wall;
+	t_image			image;
+	t_image			img;
+	t_image			textures;
+	t_image			sprit;
+	t_image			door;
+	t_data			*data;
+	t_textures		txt;
+	t_mini			mini;
+	t_dr			dr;
 	pthread_mutex_t	mut;
 }				t_map;
 
@@ -150,7 +148,7 @@ void			draw_walls(t_map *map, double angle);
 void			fill_map3(t_map *map);
 void			inter_ver_wall(t_map *map, double angle);
 void			inter_hori_wall(t_map *map, double angle);
-void			coor_of_ver_wall(t_map *map,double x,double y);
+void			coor_of_ver_wall(t_map *map, double x, double y);
 void			coor_of_hor_wall(t_map *map, double x, double y);
 double			distance_wall(t_map *map, double x, double y);
 void			init_map(t_map *map);
@@ -167,9 +165,9 @@ void			animation_gun(t_map *map, int key_code);
 void			*routine(void *ptr);
 int				check_doors(t_map *map, int x, int y, int c);
 int				mouse_key(int key_code, int x, int y, t_map *map);
-void   			mouse_(t_map *map, int key_code);
-void			map_(t_map  *map);
-void		mvmt_coll_down(t_map *map);
-void		mvmt_coll_up(t_map *map);
+void			mouse_(t_map *map, int key_code);
+void			map_(t_map *map);
+void			mvmt_coll_down(t_map *map);
+void			mvmt_coll_up(t_map *map);
 
 #endif

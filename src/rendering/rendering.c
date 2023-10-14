@@ -6,7 +6,7 @@
 /*   By: niboukha <niboukha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 15:19:31 by niboukha          #+#    #+#             */
-/*   Updated: 2023/10/13 21:02:56 by niboukha         ###   ########.fr       */
+/*   Updated: 2023/10/14 10:25:19 by niboukha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,13 @@ void	init_image_sprt(t_map *map)
 	map->sprit.img_d[4].img = mlx_xpm_file_to_image(map->mlx,
 			"/Users/niboukha/Desktop/cub3d/textures/gun/frame5.xpm",
 			&map->sprit.img_d[4].w, &map->sprit.img_d[4].h);
+	if (!map->sprit.img_d[0].img || !map->sprit.img_d[1].img
+		|| !map->sprit.img_d[2].img || !map->sprit.img_d[3].img
+		|| !map->sprit.img_d[4].img)
+	{
+		write(2, "Error\n", 6);
+		exit(1);
+	}
 }
 
 void	init_image_door(t_map *map)
@@ -36,6 +43,11 @@ void	init_image_door(t_map *map)
 	map->door.img = mlx_xpm_file_to_image(map->mlx,
 			"/Users/niboukha/Desktop/cub3d/textures/dr.xpm",
 			&map->door.w_img, &map->door.h_img);
+	if (!map->door.img)
+	{
+		write(2, "Error\n", 6);
+		exit(1);
+	}
 }
 
 void	get_texture(t_map *map)
@@ -52,6 +64,12 @@ void	get_texture(t_map *map)
 	map->textures.img_n.img = mlx_xpm_file_to_image(map->mlx,
 			map->data->files->texture._no,
 			&map->textures.img_n.w, &map->textures.img_n.h);
+	if (!map->textures.img_w.img || !map->textures.img_e.img
+		|| !map->textures.img_s.img || !map->textures.img_n.img)
+	{
+		write(2, "Error\n", 6);
+		exit(1);
+	}
 }
 
 void	init_mlx(t_map *map)
