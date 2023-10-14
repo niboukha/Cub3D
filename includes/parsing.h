@@ -3,22 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: niboukha <niboukha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: m-boukel <m-boukel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/03 12:58:47 by m-boukel          #+#    #+#             */
-/*   Updated: 2023/10/13 21:06:15 by niboukha         ###   ########.fr       */
+/*   Created: 2023/10/14 10:14:36 by m-boukel          #+#    #+#             */
+/*   Updated: 2023/10/14 10:15:09 by m-boukel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARS_H
-# define PARS_H
+#ifndef PARSING_H
+# define PARSING_H
 
 typedef struct texture
 {
-	char *_no;
-	char *_so;
-	char *_we;
-	char *_ea;
+	char	*_no;
+	char	*_so;
+	char	*_we;
+	char	*_ea;
 }			t_texture;
 
 typedef struct s_ppos
@@ -36,7 +36,7 @@ typedef struct s_color
 	int	error;
 }			t_color;
 
-typedef struct c_c //color and coord
+typedef struct c_c
 {
 	t_color	*f;
 	t_color	*c;
@@ -51,7 +51,6 @@ typedef struct s_deriction
 	int	we;
 	int	ea;
 }			t_deriction;
-
 
 typedef struct files
 {
@@ -75,7 +74,7 @@ typedef struct data
 }					t_data;
 
 /*=========================Check_texture=======================*/
-int is_texture(t_data *data, int i);
+int		is_texture(t_data *data, int i);
 void	joint(t_data *data, int i);
 int		check_texture_path(t_data *data);
 int		check_deriction(t_data *data);
