@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: niboukha <niboukha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: m-boukel <m-boukel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/03 13:16:23 by m-boukel          #+#    #+#             */
-/*   Updated: 2023/10/13 17:41:19 by niboukha         ###   ########.fr       */
+/*   Created: 2023/10/14 10:15:25 by m-boukel          #+#    #+#             */
+/*   Updated: 2023/10/14 10:19:00 by m-boukel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 char	*get_next_line(int fd);
 char	*ft_strchr_get_next_line(char *str, int c);
 char	*ft_substr_get_next_line(char *s, unsigned int start, size_t len);
-int     strlen_get_next_line(char *str);
+int		strlen_get_next_line(char *str);
 char	*ft_strjoin_get_next_line(char *s1, char *s2);
 
 #endif
