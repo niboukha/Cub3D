@@ -6,7 +6,7 @@
 /*   By: niboukha <niboukha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 15:19:36 by niboukha          #+#    #+#             */
-/*   Updated: 2023/10/14 10:34:06 by niboukha         ###   ########.fr       */
+/*   Updated: 2023/10/15 11:08:10 by niboukha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,6 @@ typedef struct t_coor
 	int		left;
 	int		flag_a;
 	int		coll;
-	int		r;
-	double	d_wall;
 }			t_coor;
 
 typedef struct t_dir
@@ -105,12 +103,6 @@ typedef struct t_wall
 
 typedef struct t_dr
 {
-	int	v_x;
-	int	v_y;
-	int	h_x;
-	int	h_y;
-	int	x;
-	int	y;
 	int	i;
 	int	j;
 }		t_dr;
@@ -125,7 +117,6 @@ typedef struct t_map
 	t_coor			coor;
 	t_wall			wall;
 	t_image			image;
-	t_image			img;
 	t_image			textures;
 	t_image			sprit;
 	t_image			door;
@@ -134,7 +125,7 @@ typedef struct t_map
 	t_mini			mini;
 	t_dr			dr;
 	pthread_mutex_t	mut;
-}				t_map;
+}					t_map;
 
 void			rendering(t_map *map);
 void			put_pixel(t_map *map);

@@ -6,7 +6,7 @@
 /*   By: niboukha <niboukha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 15:01:54 by niboukha          #+#    #+#             */
-/*   Updated: 2023/10/13 20:39:39 by niboukha         ###   ########.fr       */
+/*   Updated: 2023/10/15 11:04:12 by niboukha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void	get_hor_door(t_map *map)
 	if (check_if_wall(map, map->wall.h_x, map->wall.h_y) == 1
 		|| !check_doors(map, map->wall.h_x, map->wall.h_y, 2))
 		map->coor.flag_a = 0;
-	map->coor.d_wall = map->coor.d;
 	if (map->coor.d <= 100)
 	{	
 		if (check_doors(map, map->wall.h_x, map->wall.h_y, 2) == 1)
@@ -69,7 +68,6 @@ void	get_ver_door(t_map *map)
 	if (check_if_wall(map, map->wall.v_x, map->wall.v_y) == 1
 		|| !check_doors(map, map->wall.v_x, map->wall.v_y, 1))
 		map->coor.flag_a = 0;
-	map->coor.d_wall = map->coor.d;
 	if (map->coor.d <= 100)
 	{
 		if (check_doors(map, map->wall.v_x, map->wall.v_y, 1) == 2)

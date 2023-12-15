@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rendering.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: m-boukel <m-boukel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: niboukha <niboukha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 15:19:31 by niboukha          #+#    #+#             */
-/*   Updated: 2023/10/14 10:49:04 by m-boukel         ###   ########.fr       */
+/*   Updated: 2023/10/15 10:58:37 by niboukha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,19 @@
 void	init_image_sprt(t_map *map)
 {
 	map->sprit.img_d[0].img = mlx_xpm_file_to_image(map->mlx,
-			"/Users/m-boukel/Desktop/Cub3D/textures/gun/frame1.xpm",
+			"/Users/niboukha/Desktop/cub3d/textures/gun/frame1.xpm",
 			&map->sprit.img_d[0].w, &map->sprit.img_d[0].h);
 	map->sprit.img_d[1].img = mlx_xpm_file_to_image(map->mlx,
-			"/Users/m-boukel/Desktop/Cub3D/textures/gun/frame2.xpm",
+			"/Users/niboukha/Desktop/cub3d/textures/gun/frame2.xpm",
 			&map->sprit.img_d[1].w, &map->sprit.img_d[1].h);
 	map->sprit.img_d[2].img = mlx_xpm_file_to_image(map->mlx,
-			"/Users/m-boukel/Desktop/Cub3D/textures/gun/frame3.xpm",
+			"/Users/niboukha/Desktop/cub3d/textures/gun/frame3.xpm",
 			&map->sprit.img_d[2].w, &map->sprit.img_d[2].h);
 	map->sprit.img_d[3].img = mlx_xpm_file_to_image(map->mlx,
-			"/Users/m-boukel/Desktop/Cub3D/textures/gun/frame4.xpm",
+			"/Users/niboukha/Desktop/cub3d/textures/gun/frame4.xpm",
 			&map->sprit.img_d[3].w, &map->sprit.img_d[3].h);
 	map->sprit.img_d[4].img = mlx_xpm_file_to_image(map->mlx,
-			"/Users/m-boukel/Desktop/Cub3D/textures/gun/frame5.xpm",
+			"/Users/niboukha/Desktop/cub3d/textures/gun/frame5.xpm",
 			&map->sprit.img_d[4].w, &map->sprit.img_d[4].h);
 	if (!map->sprit.img_d[0].img || !map->sprit.img_d[1].img
 		|| !map->sprit.img_d[2].img || !map->sprit.img_d[3].img
@@ -41,7 +41,7 @@ void	init_image_sprt(t_map *map)
 void	init_image_door(t_map *map)
 {
 	map->door.img = mlx_xpm_file_to_image(map->mlx,
-			"/Users/m-boukel/Desktop/Cub3D/textures/dr.xpm",
+			"/Users/niboukha/Desktop/cub3d/textures/dr.xpm",
 			&map->door.w_img, &map->door.h_img);
 	if (!map->door.img)
 	{
@@ -82,12 +82,6 @@ void	init_mlx(t_map *map)
 			&map->image.bits_per_pixel, &map->image.line_length,
 			&map->image.endian);
 	get_texture(map);
-	if (map->textures.img_w.w < 0 || map->textures.img_s.w < 0
-		|| map->textures.img_e.w < 0 || map->textures.img_n.w < 0)
-	{
-		printf("Error\n");
-		exit(1);
-	}
 	init_image_sprt(map);
 	init_image_door(map);
 }

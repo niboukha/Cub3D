@@ -6,7 +6,7 @@
 /*   By: m-boukel <m-boukel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 03:34:30 by m-boukel          #+#    #+#             */
-/*   Updated: 2023/10/14 10:56:47 by m-boukel         ###   ########.fr       */
+/*   Updated: 2023/10/14 10:04:20 by m-boukel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int	parsing(t_data *data, t_map *map, int fd)
 	free_string(data->files->file);
 	if (check_texture_path(data))
 	{
-		ft_putstr_fd("Error : Texture path not valid\n", 2);
+		ft_putstr_fd("Error : Texture path not valid2\n", 2);
 		exit(EXIT_FAILURE);
 	}
 	if (check_deriction(data))

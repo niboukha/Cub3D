@@ -6,7 +6,7 @@
 /*   By: niboukha <niboukha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 20:50:24 by niboukha          #+#    #+#             */
-/*   Updated: 2023/10/13 20:56:05 by niboukha         ###   ########.fr       */
+/*   Updated: 2023/10/15 11:02:32 by niboukha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	mouse_(t_map *map, int key_code)
 	}
 	if (key_code == 3)
 	{
-		if (map->coor.d_wall > 100)
+		if (map->coor.d > 100)
 			map_(map);
 	}
 }
